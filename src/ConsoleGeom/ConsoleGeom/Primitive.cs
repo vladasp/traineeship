@@ -1,46 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleGeom
 {
     class Primitive
     {
-        public delegate int DelegateType();
+        public delegate double DelegateType();
         public event DelegateType OnChangedLine;
 
-        public int[] circle()
+        public double[] CirclePrimitive()
         {
-            int[] CAr = new int [3];
-            int R;
+            double[] circleArray = new double[3];
+            double radiusCircle;
             do
             {
                 Console.WriteLine("Enter R");
-                R = OnChangedLine();
+                radiusCircle = OnChangedLine();
                 //Check for the correct range
-                if (R <= 0) { Console.WriteLine("Value is entered incorrectly"); }
+                if (radiusCircle <= 0) { Console.WriteLine("Value is entered incorrectly"); }
             }
-            while (R <= 0);
+            while (radiusCircle <= 0);
 
             Console.WriteLine("Enter x");
-            int x = OnChangedLine();
+            double x = OnChangedLine();
             Console.WriteLine("Enter y");
-            int y = OnChangedLine();
-            CAr[0] = R;
-            CAr[1] = x;
-            CAr[2] = y;
-           
-            //Console.WriteLine("R : {0}; x : {1}; y : {2}", CAr[0], CAr[1], CAr[2]);
-            return CAr;
+            double y = OnChangedLine();
+            circleArray[0] = radiusCircle;
+            circleArray[1] = x;
+            circleArray[2] = y;
+
+            return circleArray;
         }
 
-        public int[,] triangle()
+        public double[,] TrianglePrimitive()
         {
-            int x1; int y1;int x2;int y2; int x3;int y3;
-            bool FALSE = false;
-            int[,] TAr = new int[3, 4];
+            double x1; double y1; double x2; double y2; double x3; double y3;
+            bool checkPoints = false;
+            double[,] triangleArray = new double[3, 4];
 
             do
             {
@@ -60,30 +55,28 @@ namespace ConsoleGeom
                 y3 = OnChangedLine();
 
                 //Check for origin (identical points and one line)
-                if (x1 != x2 && y1 != y2) { FALSE = true; }
-                else if (x1 != x3 && y1 != y3) { FALSE = true; }
-                else if (x2 != x3 && y2 != y3) { FALSE = true; }
+                if (x1 != x2 && y1 != y2) { checkPoints = true; }
+                else if (x1 != x3 && y1 != y3) { checkPoints = true; }
+                else if (x2 != x3 && y2 != y3) { checkPoints = true; }
                 else
                 {
                     Console.WriteLine("Value is entered incorrectly");
                 }
             }
-            while (FALSE == false);
+            while (!checkPoints);
 
-            TAr[0, 0] = x1; TAr[0, 1] = y1; TAr[0, 2] = x2; TAr[0, 3] = y2;
-            TAr[1, 0] = x2; TAr[1, 1] = y2; TAr[1, 2] = x3; TAr[1, 3] = y3;
-            TAr[2, 0] = x3; TAr[2, 1] = y3; TAr[2, 2] = x1; TAr[2, 3] = y1;
+            triangleArray[0, 0] = x1; triangleArray[0, 1] = y1; triangleArray[0, 2] = x2; triangleArray[0, 3] = y2;
+            triangleArray[1, 0] = x2; triangleArray[1, 1] = y2; triangleArray[1, 2] = x3; triangleArray[1, 3] = y3;
+            triangleArray[2, 0] = x3; triangleArray[2, 1] = y3; triangleArray[2, 2] = x1; triangleArray[2, 3] = y1;
 
-            //Console.WriteLine("x1: {0}; y1: {1}; x2: {2}, y2: {3}, x3: {4}, y3: {5}", TAr[0, 0], TAr[0, 1], TAr[0, 2], TAr[0, 3], TAr[1, 2], TAr[1, 3]);
-
-            return TAr;
+            return triangleArray;
         }
 
-        public int [,] square()
+        public double[,] SquarePrimitive()
         {
-            int x1; int y1; int x2; int y2;
-            bool FALSE = false;
-            int[,] SAr = new int[4,4];
+            double x1; double y1; double x2; double y2;
+            bool checkPoints = false;
+            double[,] squareArray = new double[4, 4];
 
             do
             {
@@ -98,22 +91,21 @@ namespace ConsoleGeom
                 y2 = OnChangedLine();
 
                 //Check for origin (identical points)
-                if (x1 != x2 && y1 != y2) { FALSE = true; }
+                if (x1 != x2 && y1 != y2) { checkPoints = true; }
                 else
                 {
                     Console.WriteLine("Value is entered incorrectly");
                 }
             }
-            while (FALSE == false);
+            while (!checkPoints);
 
-            SAr[0, 0] = x1; SAr[0, 1] = y1; SAr[0, 2] = x1; SAr[0, 3] = y2;
-            SAr[1, 0] = x1; SAr[1, 1] = y2; SAr[1, 2] = x2; SAr[1, 3] = y2;
-            SAr[2, 0] = x2; SAr[2, 1] = y2; SAr[2, 2] = x2; SAr[2, 3] = y1;
-            SAr[3, 0] = x2; SAr[3, 1] = y1; SAr[3, 2] = x1; SAr[3, 3] = y1;
-            
-            return SAr;
+            squareArray[0, 0] = x1; squareArray[0, 1] = y1; squareArray[0, 2] = x1; squareArray[0, 3] = y2;
+            squareArray[1, 0] = x1; squareArray[1, 1] = y2; squareArray[1, 2] = x2; squareArray[1, 3] = y2;
+            squareArray[2, 0] = x2; squareArray[2, 1] = y2; squareArray[2, 2] = x2; squareArray[2, 3] = y1;
+            squareArray[3, 0] = x2; squareArray[3, 1] = y1; squareArray[3, 2] = x1; squareArray[3, 3] = y1;
+
+            return squareArray;
         }
     }
 }
 
-   
