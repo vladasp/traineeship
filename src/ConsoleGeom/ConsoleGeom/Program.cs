@@ -1,366 +1,358 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleGeom
 {
     class Program
     {
-        //Marker changes
+
         static void Main(string[] args)
         {
             Instuctions();
-            Primitive p = new Primitive();
-            ClassEvent CE = new ClassEvent();
-            p.OnChangedLine += CE.ChangedLine;
+            Primitive primitive = new Primitive();
+            ClassEvent classEvent = new ClassEvent();
+            primitive.OnChangedLine += classEvent.ChangedLine;
             bool isExit = false;
             string input;
 
-    while (isExit == false) {
-        input = Console.ReadLine();
-        switch (input) {
-
-     case "R":
+            while (!isExit)
+            {
+                input = Console.ReadLine();
+                switch (input)
+                {
+                    case "R":
                         {
-                            int[] Circle1 = new int[3]; int[] Circle2 = new int[3];
-                            int[,] Triangle1 = new int[3, 4]; int[,] Triangle2 = new int[3, 4];
-                            int[,] Square1 = new int[4, 4]; int[,] Square2 = new int[4, 4];
+                            double[] firstCircle = new double[3]; double[] secondCircle = new double[3];
+                            double[,] firstTriangle = new double[3, 4]; double[,] secondTriangle = new double[3, 4];
+                            double[,] firstSquare = new double[4, 4]; double[,] secondSquare = new double[4, 4];
+
+                            /// primitiveArray have all choices of the primitive:
+                            /// [0] - triangle (enter T)
+                            /// [1] - square (enter S)
+                            /// [2] - circle (enter C)
+                            string[] primitiveArray = new string[3] { "T", "S", "C" };
 
                             #region  First primitive
-                            string prim1;
+                            string firstPrimitive;
                             do
                             {
                                 Console.WriteLine("Select first primitive (T - triangle, S -square, C - circle)");
-                                prim1 = Console.ReadLine();
-                                if (prim1 == "T") { Triangle1 = p.triangle(); }
-                                else if (prim1 == "S") { Square1 = p.square(); }
-                                else if (prim1 == "C") { Circle1 = p.circle(); }
+                                firstPrimitive = Console.ReadLine();
+                                if (firstPrimitive == primitiveArray[0]) { firstTriangle = primitive.TrianglePrimitive(); }
+                                else if (firstPrimitive == primitiveArray[1]) { firstSquare = primitive.SquarePrimitive(); }
+                                else if (firstPrimitive == primitiveArray[2]) { firstCircle = primitive.CirclePrimitive(); }
                                 else { Console.WriteLine("Value is entered incorrectly"); };
                             }
-                            while (prim1 != "T" && prim1 != "S" && prim1 != "C");
+                            while (firstPrimitive != primitiveArray[0] && firstPrimitive != primitiveArray[1] && firstPrimitive != primitiveArray[2]);
                             #endregion
 
                             #region Second primitive
-                            string prim2;
+                            string secondPrimitive;
                             do
                             {
                                 Console.WriteLine("Select second primitive (T - triangle, S -square, C - circle)");
-                                prim2 = Console.ReadLine();
-                                if (prim2 == "T") { Triangle2 = p.triangle(); }
-                                else if (prim2 == "S") { Square2 = p.square(); }
-                                else if (prim2 == "C") { Circle2 = p.circle(); }
+                                secondPrimitive = Console.ReadLine();
+                                if (secondPrimitive == primitiveArray[0]) { secondTriangle = primitive.TrianglePrimitive(); }
+                                else if (secondPrimitive == primitiveArray[1]) { secondSquare = primitive.SquarePrimitive(); }
+                                else if (secondPrimitive == primitiveArray[2]) { secondCircle = primitive.CirclePrimitive(); }
                                 else { Console.WriteLine("Value is entered incorrectly"); };
                             }
-                            while (prim2 != "T" && prim2 != "S" && prim2 != "C");
+                            while (secondPrimitive != primitiveArray[0] && secondPrimitive != primitiveArray[1] && secondPrimitive != primitiveArray[2]);
                             #endregion
 
-                            #region  Comparing primitives
-                            if (prim1 == "C" && prim2 != "C" || prim1 != "C" && prim2 == "C")
+                            #region  Intersections primitives
+                            if (firstPrimitive == primitiveArray[2] && secondPrimitive != primitiveArray[2] || firstPrimitive != primitiveArray[2] && secondPrimitive == primitiveArray[2])
                             {
-                                if (prim1 == "C" && prim2 == "T")
+                                if (firstPrimitive == primitiveArray[2] && secondPrimitive == primitiveArray[0])
                                 {
-                                    ComparingCL(Circle1, Triangle2);
+                                    IntersectionsCircleAndLine(firstCircle, secondTriangle);
                                 }
-                                if (prim1 == "C" && prim2 == "S")
+                                if (firstPrimitive == primitiveArray[2] && secondPrimitive == primitiveArray[1])
                                 {
-                                    ComparingCL(Circle1, Square2);
+                                    IntersectionsCircleAndLine(firstCircle, secondSquare);
                                 }
-                                if (prim2 == "C" && prim1 == "T")
+                                if (secondPrimitive == primitiveArray[2] && firstPrimitive == primitiveArray[0])
                                 {
-                                    ComparingCL(Circle2, Triangle1);
+                                    IntersectionsCircleAndLine(secondCircle, firstTriangle);
                                 }
-                                if (prim2 == "C" && prim1 == "S")
+                                if (secondPrimitive == primitiveArray[2] && firstPrimitive == primitiveArray[1])
                                 {
-                                    ComparingCL(Circle2, Square1);
+                                    IntersectionsCircleAndLine(secondCircle, firstSquare);
                                 }
                             }
 
-                            if (prim1 == "C" && prim2 == "C")
+                            if (firstPrimitive == primitiveArray[2] && secondPrimitive == primitiveArray[2])
                             {
-                                ComparingCC(Circle1, Circle2);
+                                IntersectionsCircleAndCircle(firstCircle, secondCircle);
                             }
 
-                            if (prim1 != "C" && prim2 != "C")
+                            if (firstPrimitive != primitiveArray[2] && secondPrimitive != primitiveArray[2])
                             {
-                                if (prim1 == "T" && prim2 == "T")
+                                if (firstPrimitive == primitiveArray[0] && secondPrimitive == primitiveArray[0])
                                 {
-                                    ComparingLL(Triangle1, Triangle2);
+                                    IntersectionsLineAndLine(firstTriangle, secondTriangle);
                                 }
-                                if (prim1 == "S" && prim2 == "S")
+                                if (firstPrimitive == primitiveArray[1] && secondPrimitive == primitiveArray[1])
                                 {
-                                    ComparingLL(Square1, Square2);
+                                    IntersectionsLineAndLine(firstSquare, secondSquare);
                                 }
-                                if (prim1 == "T" && prim2 == "S")
+                                if (firstPrimitive == primitiveArray[0] && secondPrimitive == primitiveArray[1])
                                 {
-                                    ComparingLL(Triangle1, Square2);
+                                    IntersectionsLineAndLine(firstTriangle, secondSquare);
                                 }
-                                if (prim1 == "S" && prim2 == "T")
+                                if (firstPrimitive == primitiveArray[1] && secondPrimitive == primitiveArray[0])
                                 {
-                                    ComparingLL(Square1, Triangle2);
+                                    IntersectionsLineAndLine(firstSquare, secondTriangle);
                                 }
                             }
                             #endregion
+
                             break;
                         }
-        case "E":
+                    case "E":
                         {
                             isExit = true; break;
                         }
-        default: Instuctions(); break;
-
-
+                    default: Instuctions(); break;
+                }
             }
         }
-    }
 
-        static public List<double> ComparingCL(int [] ARC, int[,] ARL)
+        static public List<double> IntersectionsCircleAndLine(double[] parametersCircle, double[,] parametersLine)
         {
-            double K=0; double L=0;
+            double k = 0; double l = 0;
             double a; double b; double c;
-            List<double> CompAr = new List<double>();
-            double X1 = 0; double X2 = 0; double Y1 = 0; double Y2 = 0; double D = 0;
+            List<double> intersectionsArray = new List<double>();
+            double x1 = 0; double x2 = 0; double y1 = 0; double y2 = 0; double discriminant = 0;
 
-            for (int i = 0; i < (ARL.Length/4); i++)
+            for (int i = 0; i < (parametersLine.Length / 4); i++)
             {
-                int X11 = ARL[i, 0]; int Y11 = ARL[i, 1]; int X12 = ARL[i, 2]; int Y12 = ARL[i, 3];
-                int dX = X12 - X11; int dY = Y12 - Y11;
-                //Console.WriteLine("X11: {0}, Y11: {1}, X12: {2}, Y12: {3}", X11, Y11, X12, Y12);
+                double x11 = parametersLine[i, 0]; double y11 = parametersLine[i, 1]; double y12 = parametersLine[i, 2]; double y22 = parametersLine[i, 3];
+                double deltaX = y12 - x11; double deltaY = y22 - y11;
 
-                if (dX != 0 && dY != 0)
-                    {
-                        K = dX / dY; L = Y11 - (X11 * dY / dX);
-                    }    
-                else if (dY != 0 && dX == 0)
-                    {
-                        K = 0; L = X11;
-                    }
-                else if (dX != 0 && dY == 0)
-                    {
-                        K = 0; L = Y11;
-                    }
-
-                a = 1 + K * K;
-                b = 2 * (K * L - ARC[1] - ARC[2] * K);
-                c = L * L - 2 * ARC[1] * L + ARC[2] * ARC[2] + ARC[1] * ARC[1] - ARC[0] * ARC[0];
-
-                D = Discrim(a, b, c)[0];
-                if (D > 0)
+                if (deltaX != 0 && deltaY != 0)
                 {
-                    if (dX == 0)
-                        {
-                            Y1 = Discrim(a, b, c)[1]; X1 = K * Y1 + L;
-                            Y2 = Discrim(a, b, c)[2]; X2 = K * Y2 + L;
-                        }
+                    k = deltaX / deltaY; l = y11 - (x11 * deltaY / deltaX);
+                }
+                else if (deltaY != 0 && deltaX == 0)
+                {
+                    k = 0; l = x11;
+                }
+                else if (deltaX != 0 && deltaY == 0)
+                {
+                    k = 0; l = y11;
+                }
+
+                double centerX = parametersCircle[1]; double centerY = parametersCircle[2]; double radius = parametersCircle[0];
+                a = 1 + k * k;
+                b = 2 * (k * l - centerX - centerY * k);
+                c = l * l - 2 * centerX * l + centerY * centerY + centerX * centerX - radius * radius;
+
+                discriminant = SolutionQuadraticEquation(a, b, c)[0];
+                if (discriminant > 0)
+                {
+                    if (deltaX == 0)
+                    {
+                        y1 = SolutionQuadraticEquation(a, b, c)[1]; x1 = k * y1 + l;
+                        y2 = SolutionQuadraticEquation(a, b, c)[2]; x2 = k * y2 + l;
+                    }
                     else
-                        {
-                            X1 = Discrim(a, b, c)[1]; Y1 = K * X1 + L;
-                            X2 = Discrim(a, b, c)[2]; Y2 = K * X2 + L;
-                        }
+                    {
+                        x1 = SolutionQuadraticEquation(a, b, c)[1]; y1 = k * x1 + l;
+                        x2 = SolutionQuadraticEquation(a, b, c)[2]; y2 = k * x2 + l;
+                    }
                 }
-                if (D == 0)
+                if (discriminant == 0)
                 {
-                    if (dX == 0)
-                        {
-                            Y1 = Discrim(a, b, c)[1]; X1 = K * Y1 + L;
-                        }
+                    if (deltaX == 0)
+                    {
+                        y1 = SolutionQuadraticEquation(a, b, c)[1]; x1 = k * y1 + l;
+                    }
                     else
-                        {
-                            X1 = Discrim(a, b, c)[1]; Y1 = K * X1 + L;
-                        }
-                }
-                if (Y1 > Y11 && Y1 < Y12 || Y1 < Y11 && Y1 > Y12 || Y1 == Y11 || Y1 == Y12)
-                {
-                    if (X1 > X11 && X1 < X12 || X1 < X11 && X1 > X12 || X1 == X11 || X1 == X12)
                     {
-                        CompAr.Add(X1);
-                        CompAr.Add(Y1);
-                        Console.WriteLine("X: {0}, Y: {1}", X1, Y1);
+                        x1 = SolutionQuadraticEquation(a, b, c)[1]; y1 = k * x1 + l;
                     }
                 }
-                if (Y2 > Y11 && Y2 < Y12 || Y2 < Y11 && Y2 > Y12 || Y2 == Y11 || Y2 == Y12)
+                if ((y1 > y11 && y1 < y22 || y1 < y11 && y1 > y22 || y1 == y11 || y1 == y22)
+                && (x1 > x11 && x1 < y12 || x1 < x11 && x1 > y12 || x1 == x11 || x1 == y12))
                 {
-                    if (X2 > X11 && X2 < X12 || X2 < X11 && X2 > X12 || X2 == X11 || X2 == X12)
-                    {
-                        CompAr.Add(X2);
-                        CompAr.Add(Y2);
-                        Console.WriteLine("X: {0}, Y: {1}", X2, Y2);
-                    }
+                    intersectionsArray.Add(x1);
+                    intersectionsArray.Add(y1);
+                    Console.WriteLine("X: {0}, Y: {1}", x1, y1);
                 }
 
+                if ((y2 > y11 && y2 < y22 || y2 < y11 && y2 > y22 || y2 == y11 || y2 == y22)
+                    && (x2 > x11 && x2 < y12 || x2 < x11 && x2 > y12 || x2 == x11 || x2 == y12))
+                {
+                    intersectionsArray.Add(x2);
+                    intersectionsArray.Add(y2);
+                    Console.WriteLine("X: {0}, Y: {1}", x2, y2);
+                }
             }
 
-            if (CompAr.Count == 0)
+            if (intersectionsArray.Count == 0)
             {
-                Console.WriteLine("No comparing points");
+                Console.WriteLine("No intersections primitives");
             }
 
-            return CompAr;
+            return intersectionsArray;
         }
 
-        static public List<double> ComparingCC(int[] ARC1, int[] ARC2)
+        static public List<double> IntersectionsCircleAndCircle(double[] parametersFirstCircle, double[] parametersSecondCircle)
         {
-            double Xp; double Yp; double E;
+            double xCenterZero; double yCenterZero; double e;
             double a; double b; double c;
-            List<double> CompAr = new List<double>();
+            List<double> intersectionsArray = new List<double>();
 
-            Xp = ARC2[1] - ARC1[1];
-            Yp = ARC2[2] - ARC1[2];
-            E = (ARC2[0] * ARC2[0] - Xp * Xp - Yp * Yp - ARC1[0] * ARC1[0]) / (-2);
+            xCenterZero = parametersSecondCircle[1] - parametersFirstCircle[1];
+            yCenterZero = parametersSecondCircle[2] - parametersFirstCircle[2];
+            e = (parametersSecondCircle[0] * parametersSecondCircle[0] - xCenterZero * xCenterZero - yCenterZero * yCenterZero - parametersFirstCircle[0] * parametersFirstCircle[0]) / (-2);
 
-            a = Xp * Xp + Yp * Yp;
-            b = -2 * Yp * E;
-            c = E * E - Xp * Xp * ARC1[0] * ARC1[0];
+            a = xCenterZero * xCenterZero + yCenterZero * yCenterZero;
+            b = -2 * yCenterZero * e;
+            c = e * e - xCenterZero * xCenterZero * parametersFirstCircle[0] * parametersFirstCircle[0];
 
-            double D = Discrim(a, b, c)[0];
-            double X1 = Discrim(a, b, c)[1];
-            double X2 = Discrim(a, b, c)[2];
-            //Console.WriteLine("D: {0} X1:{1} X2: {1}", D, X1, X2);
+            double discriminant = SolutionQuadraticEquation(a, b, c)[0];
+            double x1 = SolutionQuadraticEquation(a, b, c)[1];
+            double x2 = SolutionQuadraticEquation(a, b, c)[2];
 
-            if (D > 0)
-                {
-                    CompAr.Add((E - X1 * Yp) / Xp);
-                    CompAr.Add(X1);
-                    CompAr.Add((E - X2 * Yp) / Xp);
-                    CompAr.Add(X2);
-                    Console.WriteLine("X1: {0}, Y1: {1}, X2: {2}, Y2: {3}", CompAr[0], CompAr[1], CompAr[2], CompAr[3]);
-                }
-            if  (D == 0) 
-                {
-                    CompAr.Add(X1);
-                    CompAr.Add((E - X1 * Yp) / Xp);
-                    Console.WriteLine("X: {0}, Y: {1}", CompAr[0], CompAr[1]);
-                }
-            if (CompAr.Count == 0)
+            if (discriminant > 0)
             {
-                Console.WriteLine("No comparing points");
+                intersectionsArray.Add((e - x1 * yCenterZero) / xCenterZero);
+                intersectionsArray.Add(x1);
+                intersectionsArray.Add((e - x2 * yCenterZero) / xCenterZero);
+                intersectionsArray.Add(x2);
+                Console.WriteLine("X1: {0}, Y1: {1}, X2: {2}, Y2: {3}", intersectionsArray[0], intersectionsArray[1], intersectionsArray[2], intersectionsArray[3]);
+            }
+            if (discriminant == 0)
+            {
+                intersectionsArray.Add(x1);
+                intersectionsArray.Add((e - x1 * yCenterZero) / xCenterZero);
+                Console.WriteLine("X: {0}, Y: {1}", intersectionsArray[0], intersectionsArray[1]);
+            }
+            if (intersectionsArray.Count == 0)
+            {
+                Console.WriteLine("No intersections primitives");
             }
 
-            return CompAr;
+            return intersectionsArray;
         }
 
-        static public List<double> ComparingLL(int[,] ARL1, int[,] ARL2)
+        static public List<double> IntersectionsLineAndLine(double[,] parametersFirstLine, double[,] parametersSecondLine)
         {
-            double K1; double L1; double K2; double L2;
-            double X = 0; double Y = 0;
+            double k1; double l1; double k2; double l2;
+            double x = 0; double y = 0;
 
-            List<double> CompAr = new List<double>();
+            List<double> intersectionsArray = new List<double>();
 
-            for (int i = 0; i < (ARL1.Length / 4); i++)
+            for (int i = 0; i < (parametersFirstLine.Length / 4); i++)
             {
-                for (int j = 0; j < (ARL2.Length / 4); j++)
+                for (int j = 0; j < (parametersSecondLine.Length / 4); j++)
                 {
-                    int X11 = ARL1[i, 0]; int Y11 = ARL1[i, 1]; int X12 = ARL1[i, 2]; int Y12 = ARL1[i, 3];
-                    int X21 = ARL2[j, 0]; int Y21 = ARL2[j, 1]; int X22 = ARL2[j, 2]; int Y22 = ARL2[j, 3];
-                    int dX1 = X12 - X11; int dY1 = Y12 - Y11;
-                    int dX2 = X22 - X21; int dY2 = Y22 - Y21;
-                    //Console.WriteLine("X11: {0}, Y11: {1}, X12: {2}, Y21: {3}, X21: {4}, Y21: {5}, X22: {6}, Y22: {7}", X11, Y11, X12, Y12, X21, Y21, X22, Y22);
+                    double x11 = parametersFirstLine[i, 0]; double y11 = parametersFirstLine[i, 1]; double x12 = parametersFirstLine[i, 2]; double y12 = parametersFirstLine[i, 3];
+                    double x21 = parametersSecondLine[j, 0]; double y21 = parametersSecondLine[j, 1]; double x22 = parametersSecondLine[j, 2]; double y22 = parametersSecondLine[j, 3];
+                    double deltaX1 = x12 - x11; double deltaY1 = y12 - y11;
+                    double deltaX2 = x22 - x21; double deltaY2 = y22 - y21;
 
                     // Without dY = 0 dX = 0
-                    if (dX1 != 0 && dX2 != 0 && dY1 != 0 && dY2 != 0)
-                        {
-                            K1 = dY1 / dX1;
-                            L1 = Y11 - (X11 * dY1 / dX1);
-                            K2 = dY2 / dX2;
-                            L2 = Y21 - (X21 * dY2 / dX2);
-                            X = (K1 - (K2 / L2)) / (1 - (L1 / L2));
-                            Y = K1 * X + L1;
-                        }
+                    if (deltaX1 != 0 && deltaX2 != 0 && deltaY1 != 0 && deltaY2 != 0)
+                    {
+                        k1 = deltaY1 / deltaX1;
+                        l1 = y11 - (x11 * deltaY1 / deltaX1);
+                        k2 = deltaY2 / deltaX2;
+                        l2 = y21 - (x21 * deltaY2 / deltaX2);
+                        x = (k1 - (k2 / l2)) / (1 - (l1 / l2));
+                        y = k1 * x + l1;
+                    }
 
                     // Without dY = 0
-                    if (dX1 != 0 && dX2 != 0 && dY1 == 0 && dY2 != 0)
-                        {
-                            K1 = 0;
-                            L1 = Y11;
-                            K2 = dY2 / dX2;
-                            L2 = Y21 - (X21 * dY2 / dX2);
-                            X = (K1 - (K2 / L2)) / (1 - (L1 / L2));
-                            Y = K1 * X + L1;
-                        }
-                    if (dX1 != 0 && dX2 != 0 && dY1 != 0 && dY2 == 0)
-                        {
-                            K1 = dY1 / dX1;
-                            L1 = Y11 - (X11 * dY1 / dX1);
-                            K2 = 0;
-                            L2 = Y21;
-                            X = (K1 - (K2 / L2)) / (1 - (L1 / L2));
-                            Y = K1 * X + L1;
-                        }
+                    if (deltaX1 != 0 && deltaX2 != 0 && deltaY1 == 0 && deltaY2 != 0)
+                    {
+                        k1 = 0;
+                        l1 = y11;
+                        k2 = deltaY2 / deltaX2;
+                        l2 = y21 - (x21 * deltaY2 / deltaX2);
+                        x = (k1 - (k2 / l2)) / (1 - (l1 / l2));
+                        y = k1 * x + l1;
+                    }
+                    if (deltaX1 != 0 && deltaX2 != 0 && deltaY1 != 0 && deltaY2 == 0)
+                    {
+                        k1 = deltaY1 / deltaX1;
+                        l1 = y11 - (x11 * deltaY1 / deltaX1);
+                        k2 = 0;
+                        l2 = y21;
+                        x = (k1 - (k2 / l2)) / (1 - (l1 / l2));
+                        y = k1 * x + l1;
+                    }
                     // Without dX = 0
-                    if (dX1 == 0 && dX2 != 0 && dY1 != 0 && dY2 != 0)
-                        {
-                            K1 = 0;
-                            L1 = X11;
-                            K2 = dX2 / dY2;
-                            L2 = X21 - (Y21 * dX2 / dY2);
-                            Y = (K1 - (K2 / L2)) / (1 - (L1 / L2));
-                            X = K1 * Y + L1;
-                        }
-                    if (dX1 != 0 && dX2 == 0 && dY1 != 0 && dY2 != 0)
-                        {
-                            K1 = dX1 / dY1;
-                            L1 = X11 - (Y11 * dX1 / dY1);
-                            K2 = 0;
-                            L2 = X21;
-                            Y = (K1 - (K2 / L2)) / (1 - (L1 / L2));
-                            X = K1 * Y + L1;
-                        }
+                    if (deltaX1 == 0 && deltaX2 != 0 && deltaY1 != 0 && deltaY2 != 0)
+                    {
+                        k1 = 0;
+                        l1 = x11;
+                        k2 = deltaX2 / deltaY2;
+                        l2 = x21 - (y21 * deltaX2 / deltaY2);
+                        y = (k1 - (k2 / l2)) / (1 - (l1 / l2));
+                        x = k1 * y + l1;
+                    }
+                    if (deltaX1 != 0 && deltaX2 == 0 && deltaY1 != 0 && deltaY2 != 0)
+                    {
+                        k1 = deltaX1 / deltaY1;
+                        l1 = x11 - (y11 * deltaX1 / deltaY1);
+                        k2 = 0;
+                        l2 = x21;
+                        y = (k1 - (k2 / l2)) / (1 - (l1 / l2));
+                        x = k1 * y + l1;
+                    }
                     // With Y = 0 X = 0;
-                    if (dX2 == 0 && dY1 == 0)
-                        {
-                            X = X21;
-                            Y = Y11;
-                        }
-                    if (dX1 == 0 && dY2 == 0)
-                        {
-                            X = X11;
-                            Y = Y21;
-                        }
-            if (Y > Y11 && Y < Y12 || Y < Y11 && Y > Y12 || Y == Y11 || Y == Y12)
-                {
-                if (Y > Y21 && Y < Y22 || Y < Y21 && Y > Y22 || Y == Y21 || Y == Y22)
+                    if (deltaX2 == 0 && deltaY1 == 0)
                     {
-                        if (X > X11 && X < X12 || X < X11 && X > X12 || X == X11 || X == X12)
-                        {
-                            if (X > X21 && X < X22 || X < X21 && X > X22 || X == X21 || X == X22)
-                            {
-                                CompAr.Add(X);
-                                CompAr.Add(Y);
-                                Console.WriteLine("X1: {0}, Y1: {1}", X, Y);
-                            }
-                        }
+                        x = x21;
+                        y = y11;
+                    }
+                    if (deltaX1 == 0 && deltaY2 == 0)
+                    {
+                        x = x11;
+                        y = y21;
+                    }
+                    if ((y > y11 && y < y12 || y < y11 && y > y12 || y == y11 || y == y12)
+                        && (y > y21 && y < y22 || y < y21 && y > y22 || y == y21 || y == y22)
+                        && (x > x11 && x < x12 || x < x11 && x > x12 || x == x11 || x == x12)
+                        && (x > x21 && x < x22 || x < x21 && x > x22 || x == x21 || x == x22)
+                        && (x > x21 && x < x22 || x < x21 && x > x22 || x == x21 || x == x22))
+                    {
+                        intersectionsArray.Add(x);
+                        intersectionsArray.Add(y);
+                        Console.WriteLine("X1: {0}, Y1: {1}", x, y);
                     }
                 }
-        }
-    }
+            }
 
-            if (CompAr.Count == 0)
-                {
-                    Console.WriteLine("No comparing points");
-                }
-            return CompAr;
+            if (intersectionsArray.Count == 0)
+            {
+                Console.WriteLine("No intersections primitives");
+            }
+            return intersectionsArray;
         }
 
-        static public double[] Discrim(double a, double b, double c)
+        static public double[] SolutionQuadraticEquation(double a, double b, double c)
         {
-            double D;
-            double Compx1 = 0;
-            double Compx2 = 0;
-            double[] Ar = new double[3]; 
+            double discriminant;
+            double x1 = 0;
+            double x2 = 0;
+            double[] resultArray = new double[3];
 
-            D = b *b - 4 * a * c;
-            
-                if (D >= 0)
-                    {
-                        Compx1 = (-b + Math.Sqrt(D)) / (2 * a);
-                        Compx2 = (-b - Math.Sqrt(D)) / (2 * a);
-                    }
-            Ar[0] = D;
-            Ar[1] = Compx1;
-            Ar[2] = Compx2;
-                //Console.WriteLine(D);
-            return Ar;
+            discriminant = b * b - 4 * a * c;
+
+            if (discriminant >= 0)
+            {
+                x1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
+                x2 = (-b - Math.Sqrt(discriminant)) / (2 * a);
+            }
+            resultArray[0] = discriminant;
+            resultArray[1] = x1;
+            resultArray[2] = x2;
+            //Console.WriteLine(D);
+            return resultArray;
         }
 
         static void Instuctions()
