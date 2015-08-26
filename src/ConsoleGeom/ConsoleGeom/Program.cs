@@ -5,6 +5,7 @@ namespace ConsoleGeom
 {
     class Program
     {
+        enum Figure { triangle = 1, square = 2, circle = 3 }
 
         static void Main(string[] args)
         {
@@ -14,109 +15,150 @@ namespace ConsoleGeom
             primitive.OnChangedLine += classEvent.ChangedLine;
             bool isExit = false;
             string input;
+            bool primitiveChacked;
+            int triangle;
+            int square;
+            int circle;
+            int firstPrimitive = 0;
+            int secondPrimitive = 0;
 
             while (!isExit)
-            {
-                input = Console.ReadLine();
-                switch (input)
                 {
-                    case "R":
-                        {
-                            double[] firstCircle = new double[3]; double[] secondCircle = new double[3];
-                            double[,] firstTriangle = new double[3, 4]; double[,] secondTriangle = new double[3, 4];
-                            double[,] firstSquare = new double[4, 4]; double[,] secondSquare = new double[4, 4];
-
-                            /// primitiveArray have all choices of the primitive:
-                            /// [0] - triangle (enter T)
-                            /// [1] - square (enter S)
-                            /// [2] - circle (enter C)
-                            string[] primitiveArray = new string[3] { "T", "S", "C" };
-
-                            #region  First primitive
-                            string firstPrimitive;
-                            do
+                input = Console.ReadLine();
+                    switch (input)
+                    {
+                        case "R":
                             {
-                                Console.WriteLine("Select first primitive (T - triangle, S -square, C - circle)");
-                                firstPrimitive = Console.ReadLine();
-                                if (firstPrimitive == primitiveArray[0]) { firstTriangle = primitive.TrianglePrimitive(); }
-                                else if (firstPrimitive == primitiveArray[1]) { firstSquare = primitive.SquarePrimitive(); }
-                                else if (firstPrimitive == primitiveArray[2]) { firstCircle = primitive.CirclePrimitive(); }
-                                else { Console.WriteLine("Value is entered incorrectly"); };
-                            }
-                            while (firstPrimitive != primitiveArray[0] && firstPrimitive != primitiveArray[1] && firstPrimitive != primitiveArray[2]);
-                            #endregion
+                                double[] firstCircle = new double[3]; double[] secondCircle = new double[3];
+                                double[,] firstTriangle = new double[3, 4]; double[,] secondTriangle = new double[3, 4];
+                                double[,] firstSquare = new double[4, 4]; Double[,] secondSquare = new double[4, 4];
+                                triangle = (int)Figure.triangle;
+                                square = (int)Figure.square;
+                                circle = (int)Figure.circle;
 
-                            #region Second primitive
-                            string secondPrimitive;
-                            do
-                            {
-                                Console.WriteLine("Select second primitive (T - triangle, S -square, C - circle)");
-                                secondPrimitive = Console.ReadLine();
-                                if (secondPrimitive == primitiveArray[0]) { secondTriangle = primitive.TrianglePrimitive(); }
-                                else if (secondPrimitive == primitiveArray[1]) { secondSquare = primitive.SquarePrimitive(); }
-                                else if (secondPrimitive == primitiveArray[2]) { secondCircle = primitive.CirclePrimitive(); }
-                                else { Console.WriteLine("Value is entered incorrectly"); };
-                            }
-                            while (secondPrimitive != primitiveArray[0] && secondPrimitive != primitiveArray[1] && secondPrimitive != primitiveArray[2]);
-                            #endregion
 
-                            #region  Intersections primitives
-                            if (firstPrimitive == primitiveArray[2] && secondPrimitive != primitiveArray[2] || firstPrimitive != primitiveArray[2] && secondPrimitive == primitiveArray[2])
-                            {
-                                if (firstPrimitive == primitiveArray[2] && secondPrimitive == primitiveArray[0])
+                                /// primitiveArray have all choices of the primitive:
+                                /// 1 - triangle
+                                /// 2 - square
+                                /// 3 - circle
+
+                                #region  First primitive
+                                do
+                                {
+                                    Console.WriteLine("Select first primitive (1 - triangle, 2 -square, 3 - circle)");
+                                    primitiveChacked = false;
+                                    string number = Console.ReadLine();
+
+                                    if (int.Parse(number) == triangle)
+                                    {
+                                        firstTriangle = primitive.TrianglePrimitive();
+                                        primitiveChacked = true;
+                                        firstPrimitive = 1;
+                                    }
+                                    else if (int.Parse(number) == square)
+                                    {
+                                        firstSquare = primitive.SquarePrimitive();
+                                        primitiveChacked = true;
+                                        firstPrimitive = 2;
+                                    }
+                                    else if (int.Parse(number) == circle)
+                                    {
+                                        firstCircle = primitive.CirclePrimitive();
+                                        primitiveChacked = true;
+                                        firstPrimitive = 3;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Value is entered incorrectly");
+                                    }
+                                }
+                                while (!primitiveChacked);
+                                #endregion
+
+                                #region Second primitive
+                                do
+                                {
+                                    Console.WriteLine("Select second primitive (1 - triangle, 2 -square, 3 - circle)");
+                                    primitiveChacked = false;
+                                    string number = Console.ReadLine();
+                                    if (int.Parse(number) == triangle)
+                                    {
+                                        secondTriangle = primitive.TrianglePrimitive();
+                                        primitiveChacked = true;
+                                        secondPrimitive = 1;
+                                    }
+                                    else if (int.Parse(number) == square)
+                                    {
+                                        secondSquare = primitive.SquarePrimitive();
+                                        primitiveChacked = true;
+                                        secondPrimitive = 2;
+                                    }
+                                    else if (int.Parse(number) == circle)
+                                    {
+                                        secondCircle = primitive.CirclePrimitive();
+                                        primitiveChacked = true;
+                                        secondPrimitive = 3;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Value is entered incorrectly");
+                                    }
+                                }
+                                while (!primitiveChacked);
+                                #endregion
+
+                                #region  Intersections primitives
+                                // Intersections Circle And Line
+                                if (firstPrimitive == circle && secondPrimitive == triangle)
                                 {
                                     IntersectionsCircleAndLine(firstCircle, secondTriangle);
                                 }
-                                if (firstPrimitive == primitiveArray[2] && secondPrimitive == primitiveArray[1])
-                                {
-                                    IntersectionsCircleAndLine(firstCircle, secondSquare);
-                                }
-                                if (secondPrimitive == primitiveArray[2] && firstPrimitive == primitiveArray[0])
+                                else if (firstPrimitive == triangle && secondPrimitive == circle)
                                 {
                                     IntersectionsCircleAndLine(secondCircle, firstTriangle);
                                 }
-                                if (secondPrimitive == primitiveArray[2] && firstPrimitive == primitiveArray[1])
+                                else if (firstPrimitive == circle && secondPrimitive == square)
+                                {
+                                    IntersectionsCircleAndLine(firstCircle, secondSquare);
+                                }
+                                else if (firstPrimitive == square && secondPrimitive == circle)
                                 {
                                     IntersectionsCircleAndLine(secondCircle, firstSquare);
                                 }
-                            }
-
-                            if (firstPrimitive == primitiveArray[2] && secondPrimitive == primitiveArray[2])
-                            {
-                                IntersectionsCircleAndCircle(firstCircle, secondCircle);
-                            }
-
-                            if (firstPrimitive != primitiveArray[2] && secondPrimitive != primitiveArray[2])
-                            {
-                                if (firstPrimitive == primitiveArray[0] && secondPrimitive == primitiveArray[0])
+                                // Intersections Circle And Circle
+                                else if (firstPrimitive == circle && secondPrimitive == circle)
                                 {
-                                    IntersectionsLineAndLine(firstTriangle, secondTriangle);
+                                    IntersectionsCircleAndCircle(firstCircle, secondCircle);
                                 }
-                                if (firstPrimitive == primitiveArray[1] && secondPrimitive == primitiveArray[1])
+                                // Intersections Circle And Circle
+                                else if (firstPrimitive == square && secondPrimitive == square)
                                 {
                                     IntersectionsLineAndLine(firstSquare, secondSquare);
                                 }
-                                if (firstPrimitive == primitiveArray[0] && secondPrimitive == primitiveArray[1])
+                                else if (firstPrimitive == triangle && secondPrimitive == triangle)
                                 {
-                                    IntersectionsLineAndLine(firstTriangle, secondSquare);
+                                    IntersectionsLineAndLine(firstTriangle, secondTriangle);
                                 }
-                                if (firstPrimitive == primitiveArray[1] && secondPrimitive == primitiveArray[0])
+                                else if (firstPrimitive == square && secondPrimitive == triangle)
                                 {
                                     IntersectionsLineAndLine(firstSquare, secondTriangle);
                                 }
-                            }
+                                else if (firstPrimitive == triangle && secondPrimitive == square)
+                                {
+                                    IntersectionsLineAndLine(secondSquare, firstTriangle);
+                                }
                             #endregion
 
                             break;
-                        }
-                    case "E":
-                        {
-                            isExit = true; break;
-                        }
+                            }
+                            case "E":
+                                {
+                        isExit = true; break;
+                    }
                     default: Instuctions(); break;
                 }
             }
-        }
+}       
 
         static public List<double> IntersectionsCircleAndLine(double[] parametersCircle, double[,] parametersLine)
         {
@@ -148,29 +190,29 @@ namespace ConsoleGeom
                 b = 2 * (k * l - centerX - centerY * k);
                 c = l * l - 2 * centerX * l + centerY * centerY + centerX * centerX - radius * radius;
 
-                discriminant = SolutionQuadraticEquation(a, b, c)[0];
+                discriminant = GetQuadraticEquation(a, b, c)[0];
                 if (discriminant > 0)
                 {
                     if (deltaX == 0)
                     {
-                        y1 = SolutionQuadraticEquation(a, b, c)[1]; x1 = k * y1 + l;
-                        y2 = SolutionQuadraticEquation(a, b, c)[2]; x2 = k * y2 + l;
+                        y1 = GetQuadraticEquation(a, b, c)[1]; x1 = k * y1 + l;
+                        y2 = GetQuadraticEquation(a, b, c)[2]; x2 = k * y2 + l;
                     }
                     else
                     {
-                        x1 = SolutionQuadraticEquation(a, b, c)[1]; y1 = k * x1 + l;
-                        x2 = SolutionQuadraticEquation(a, b, c)[2]; y2 = k * x2 + l;
+                        x1 = GetQuadraticEquation(a, b, c)[1]; y1 = k * x1 + l;
+                        x2 = GetQuadraticEquation(a, b, c)[2]; y2 = k * x2 + l;
                     }
                 }
                 if (discriminant == 0)
                 {
                     if (deltaX == 0)
                     {
-                        y1 = SolutionQuadraticEquation(a, b, c)[1]; x1 = k * y1 + l;
+                        y1 = GetQuadraticEquation(a, b, c)[1]; x1 = k * y1 + l;
                     }
                     else
                     {
-                        x1 = SolutionQuadraticEquation(a, b, c)[1]; y1 = k * x1 + l;
+                        x1 = GetQuadraticEquation(a, b, c)[1]; y1 = k * x1 + l;
                     }
                 }
                 if ((y1 > y11 && y1 < y22 || y1 < y11 && y1 > y22 || y1 == y11 || y1 == y22)
@@ -212,9 +254,9 @@ namespace ConsoleGeom
             b = -2 * yCenterZero * e;
             c = e * e - xCenterZero * xCenterZero * parametersFirstCircle[0] * parametersFirstCircle[0];
 
-            double discriminant = SolutionQuadraticEquation(a, b, c)[0];
-            double x1 = SolutionQuadraticEquation(a, b, c)[1];
-            double x2 = SolutionQuadraticEquation(a, b, c)[2];
+            double discriminant = GetQuadraticEquation(a, b, c)[0];
+            double x1 = GetQuadraticEquation(a, b, c)[1];
+            double x2 = GetQuadraticEquation(a, b, c)[2];
 
             if (discriminant > 0)
             {
@@ -334,7 +376,7 @@ namespace ConsoleGeom
             return intersectionsArray;
         }
 
-        static public double[] SolutionQuadraticEquation(double a, double b, double c)
+        static public double[] GetQuadraticEquation(double a, double b, double c)
         {
             double discriminant;
             double x1 = 0;
@@ -351,7 +393,6 @@ namespace ConsoleGeom
             resultArray[0] = discriminant;
             resultArray[1] = x1;
             resultArray[2] = x2;
-            //Console.WriteLine(D);
             return resultArray;
         }
 
@@ -363,5 +404,6 @@ namespace ConsoleGeom
 
     }
 }
+
 
 
