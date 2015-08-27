@@ -1,36 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleGeom
 {
     class ClassEvent
     {
-        public int ChangedLine()
+        public double ChangedLine()
         {
-            string a;
-            int b = 0; bool TRUE = false;
+            string parameterSet;
+            double parameterGet = 0;
+            double number;
+            bool canPars = false;
+
             do
             {
-                a = Console.ReadLine();
-                foreach (char c in a)
-                {
-                    if (Char.IsNumber(c) == true || c == '-')
+                parameterSet = Console.ReadLine();
+                    if (double.TryParse(parameterSet, out number))
                     {
-                        b = int.Parse(a);
-                        TRUE = true;
+                        parameterGet = Convert.ToDouble(parameterSet);
+                        canPars = true;
                     }
                     else
                     {
                         Console.WriteLine("Only numbers");
-                        a = a.Remove(a.Length - 1);
+                        canPars = false;
                     }
-                }
             }
-            while (TRUE == false);
-            return b;
-            }
+            while (!canPars);
+            return parameterGet;
         }
     }
+}
