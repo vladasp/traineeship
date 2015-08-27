@@ -10,6 +10,9 @@ namespace FileCatalog
     {
         static void Main(string[] args)
         {
+            List<ComputerPrograms> softsList = new List<ComputerPrograms>();
+            List<Films> filmsList = new List<Films>();
+            List<Music> songsList = new List<Music>();
         }
     }
 }
