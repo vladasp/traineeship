@@ -6,24 +6,27 @@ namespace ConsoleGeom
     {
         public double ChangedLine()
         {
-            string parameterGet;
-            double parameterSet = 0;
-            bool checkParameter = false;
+            string parameterSet;
+            double parameterGet = 0;
+            double number;
+            bool canPars = false;
+
             do
             {
-                parameterGet = Console.ReadLine();
-                try
-                {
-                    parameterSet = Convert.ToDouble(parameterGet);
-                    checkParameter = true;
-                }
-                catch
-                {
-                    Console.WriteLine("Only numbers");
-                }
+                parameterSet = Console.ReadLine();
+                    if (double.TryParse(parameterSet, out number))
+                    {
+                        parameterGet = Convert.ToDouble(parameterSet);
+                        canPars = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Only numbers");
+                        canPars = false;
+                    }
             }
-            while (!checkParameter);
-            return parameterSet;
+            while (!canPars);
+            return parameterGet;
         }
     }
 }
