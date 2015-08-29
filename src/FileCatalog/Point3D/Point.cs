@@ -34,7 +34,7 @@ namespace Point3D
             _z = OnChangedLine();
 
             x = _x; y = _y; z = _z;
-            Console.WriteLine("New x = {0} old x = {3}, new y {1} old y = {4}, new z {2} old z = {5}", x, y, z, oldX, oldY, oldZ);
+            Console.WriteLine("New x = {0} old x = {3}, new y = {1} old y = {4}, new z = {2} old z = {5}", x, y, z, oldX, oldY, oldZ);
             return;
         }
 
@@ -44,7 +44,7 @@ namespace Point3D
             _x = Convert.ToString(Math.Pow(x, 1));
             _y = Convert.ToString(Math.Pow(y, 1));
             _z = Convert.ToString(Math.Pow(z, 1));
-            Console.WriteLine("String X = {0}, string Y = {1}, string Z = {2}", _x, _y, _z);
+            Console.WriteLine("String point ({0}, {1}, {2})", _x, _y, _z);
             return;
         }
     }
