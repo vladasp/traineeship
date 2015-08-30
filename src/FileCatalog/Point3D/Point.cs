@@ -4,19 +4,17 @@ namespace Point3D
 {
     class Point
     {
-        public delegate double DelegateType();
-        public event DelegateType OnChangedLine;
 
         public double x; public double y; public double z;
 
         public void AddPoint()
         {
             Console.WriteLine("Enter coordinate X");
-            x = OnChangedLine();
+            x = ChangedLineDouble();
             Console.WriteLine("Enter coordinate Y");
-            y = OnChangedLine();
+            y = ChangedLineDouble();
             Console.WriteLine("Enter coordinate Z");
-            z = OnChangedLine();
+            z = ChangedLineDouble();
             return;
         }
 
@@ -27,11 +25,11 @@ namespace Point3D
             oldX = x; oldY = y; oldZ = z;
 
             Console.WriteLine("Enter new X");
-            _x = OnChangedLine();
+            _x = ChangedLineDouble();
             Console.WriteLine("Enter new Y");
-            _y = OnChangedLine();
+            _y = ChangedLineDouble();
             Console.WriteLine("Enter new Z");
-            _z = OnChangedLine();
+            _z = ChangedLineDouble();
 
             x = _x; y = _y; z = _z;
             Console.WriteLine("New x = {0} old x = {3}, new y = {1} old y = {4}, new z = {2} old z = {5}", x, y, z, oldX, oldY, oldZ);
@@ -47,5 +45,31 @@ namespace Point3D
             Console.WriteLine("String point ({0}, {1}, {2})", _x, _y, _z);
             return;
         }
+
+        public double ChangedLineDouble()
+        {
+            string parameterSet;
+            double parameterGet = 0;
+            double number;
+            bool canPars = false;
+
+            do
+            {
+                parameterSet = Console.ReadLine();
+                if (double.TryParse(parameterSet, out number))
+                {
+                    parameterGet = Convert.ToDouble(parameterSet);
+                    canPars = true;
+                }
+                else
+                {
+                    Console.WriteLine("Only numbers");
+                    canPars = false;
+                }
+            }
+            while (!canPars);
+            return parameterGet;
+        }
+
     }
 }
