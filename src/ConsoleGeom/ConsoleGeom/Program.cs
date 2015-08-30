@@ -31,7 +31,7 @@ namespace ConsoleGeom
                             {
                                 double[] firstCircle = new double[3]; double[] secondCircle = new double[3];
                                 double[,] firstTriangle = new double[3, 4]; double[,] secondTriangle = new double[3, 4];
-                                double[,] firstSquare = new double[4, 4]; Double[,] secondSquare = new double[4, 4];
+                                double[,] firstSquare = new double[4, 4]; double[,] secondSquare = new double[4, 4];
                                 triangle = (int)Figure.triangle;
                                 square = (int)Figure.square;
                                 circle = (int)Figure.circle;
