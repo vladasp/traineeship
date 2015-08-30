@@ -1,0 +1,6 @@
+D:\Source\Repos\traineeship\src\FileCatalog\FileCatalog\bin\Debug\FileCatalog.exe.config
+D:\Source\Repos\traineeship\src\FileCatalog\FileCatalog\bin\Debug\FileCatalog.exe
+D:\Source\Repos\traineeship\src\FileCatalog\FileCatalog\bin\Debug\FileCatalog.pdb
+D:\Source\Repos\traineeship\src\FileCatalog\FileCatalog\obj\Debug\FileCatalog.csprojResolveAssemblyReference.cache
+D:\Source\Repos\traineeship\src\FileCatalog\FileCatalog\obj\Debug\FileCatalog.exe
+D:\Source\Repos\traineeship\src\FileCatalog\FileCatalog\obj\Debug\FileCatalog.pdb
