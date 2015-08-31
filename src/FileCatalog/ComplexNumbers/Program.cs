@@ -4,8 +4,6 @@ namespace ComplexNumbers
 {
     class Program
     {
-        enum Command { M = 1, S = 2, A = 3, E = 4 }
-
         static void Main(string[] args)
         {
             Program program = new Program();
@@ -16,6 +14,10 @@ namespace ComplexNumbers
             string b = Convert.ToString(program.ChangedLine()) + "i";
             ComplexNumbers complexNumber = new ComplexNumbers(a, b);
             complexNumber.NumToString();
+            const string addControl = "A";
+            const string magnitudeControl = "M";
+            const string stringControl = "S";
+            const string exitControl = "E";
 
             bool isExit = false;
             string input;
@@ -25,17 +27,17 @@ namespace ComplexNumbers
                 input = Console.ReadLine();
                 switch (input)
                 {
-                    case "M":
+                    case magnitudeControl:
                         {
                             complexNumber.GetMagnitude();
                             break;
                         }
-                    case "S":
+                    case stringControl:
                         {
                             complexNumber.NumToString();
                             break;
                         }
-                    case "A":
+                    case addControl:
                         {
                             Console.WriteLine("Enter real part of complex number");
                             double a1 = program.ChangedLine();
@@ -45,7 +47,7 @@ namespace ComplexNumbers
                             complexNumber.Add(a1, bi1);
                             break;
                         }
-                    case "E":
+                    case exitControl:
                         {
                             isExit = true; break;
                         }
