@@ -3,21 +3,27 @@ using System.Collections.Generic;
 
 namespace Point3D
 {
+    enum UserControl { Add = 1, M, C, D, Show, E}
+
     class Program
     {
         static void Main(string[] args)
         {
             List<Point> pointsList = new List<Point>();
-            Program program = new Program();
             Point point = new Point();
             bool isExit = false;
             string input;
             int countPoints;
             int indexPoint;
-
+            const string addControl = "A";
+            const string mooveControl = "M";
+            const string stringControl = "S";
+            const string distanceControl = "D";
+            const string showControl = "Show";
+            const string exitControl = "E";
 
             Console.WriteLine("Enter count of points from 1 to 5");
-            countPoints = program.ChangedLineInt();
+            countPoints = ChangedLineInt();
 
             if (countPoints < 6 && countPoints > 0)
             {
@@ -32,15 +38,16 @@ namespace Point3D
             while (!isExit)
             {
                 input = Console.ReadLine();
+
                 switch (input)
                 {
                     #region MooveTo
-                    case "M":
+                    case mooveControl:
                         {
                             Console.WriteLine("Enter the point you what to moove");
                             do
                             {
-                                indexPoint = program.ChangedLineInt();
+                                indexPoint = ChangedLineInt();
                                 if (indexPoint > pointsList.Count || indexPoint < 1)
                                 {
                                     Console.WriteLine("Index point out of range");
@@ -55,12 +62,12 @@ namespace Point3D
                         }
                     #endregion
                     #region Create to string
-                    case "C":
+                    case stringControl:
                         {
                             Console.WriteLine("Enter the point you what to see");
                             do
                             {
-                                indexPoint = program.ChangedLineInt();
+                                indexPoint = ChangedLineInt();
                                 if (indexPoint > pointsList.Count || indexPoint < 1)
                                 {
                                     Console.WriteLine("Index point out of range");
@@ -72,13 +79,13 @@ namespace Point3D
                         }
                     #endregion
                     #region Distance
-                    case "D":
+                    case distanceControl:
                         {
                             int firstIndexPoint, secondindexPoint;
                             do
                             {
                                 Console.WriteLine("Enter firsr point");
-                                firstIndexPoint = program.ChangedLineInt();
+                                firstIndexPoint = ChangedLineInt();
                                 if (firstIndexPoint > pointsList.Count || firstIndexPoint < 1)
                                 {
                                     Console.WriteLine("Index point out of range");
@@ -88,7 +95,7 @@ namespace Point3D
                             do
                             {
                                 Console.WriteLine("Enter second point");
-                                secondindexPoint = program.ChangedLineInt();
+                                secondindexPoint = ChangedLineInt();
                                 if (secondindexPoint > pointsList.Count || secondindexPoint < 1)
                                 {
                                     Console.WriteLine("Index point out of range");
@@ -107,18 +114,17 @@ namespace Point3D
                         }
                     #endregion
                     #region Add new point
-                    case "Add":
+                    case addControl:
                     {
                             pointsList.Add(new Point());
                             Console.WriteLine("Enter coordinates of {0} point", pointsList.Count);
-                            //pointsList[pointsList.Count - 1].OnChangedLine += classEventDouble.ChangedLine;
                             pointsList[pointsList.Count-1].AddPoint();
                             Console.WriteLine("Point {0} x = {1} y = {2} z = {3} ", pointsList.Count, pointsList[pointsList.Count-1].x, pointsList[pointsList.Count-1].y, pointsList[pointsList.Count-1].z);
                             break;
                     }
                     #endregion
                     #region Show all points
-                    case "Show":
+                    case showControl:
                         {
                             for (int i =0; i < pointsList.Count; i++)
                             {
@@ -128,7 +134,7 @@ namespace Point3D
                         }
                     #endregion
                     #region Exit
-                    case "Exit":
+                    case exitControl:
                         {
                             isExit = true; break;
                         }
@@ -141,10 +147,10 @@ namespace Point3D
 
         static void Instuctions()
             {
-                Console.WriteLine("||To add new point enter 'Add',\n||to show coordinats of one point 'C',\n||to show all points enter 'Show',\n||to moove point 'M',\n||to exit enter 'Exit'");
+                Console.WriteLine("||To add new point enter 1,\n||to moove point enter 2,\n||to determine distance enter 3,\n||to show coordinats of one point 4,\n||to show all points enter 5,\n||to exit enter 6");
             }
 
-        public int ChangedLineInt()
+        public static int ChangedLineInt()
         {
             string parameterSet;
             int parameterGet = 0;
