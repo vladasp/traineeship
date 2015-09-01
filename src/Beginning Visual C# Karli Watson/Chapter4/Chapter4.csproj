@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0A1EF389-3124-4CF4-A51D-8B6A6B9BC86C}</ProjectGuid>
+    <ProjectGuid>{B2C2C9E4-C2AD-4451-9472-F3D9BAB3C88C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Chapter4</RootNamespace>
@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exercise1.cs" />
+    <Compile Include="Exercise2.cs" />
+    <Compile Include="Exercise3.cs" />
+    <Compile Include="Exercise4.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
