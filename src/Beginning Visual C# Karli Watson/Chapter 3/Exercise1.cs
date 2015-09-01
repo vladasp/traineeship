@@ -1,23 +1,29 @@
-﻿namespace Chapter_3
+﻿using System;
+namespace Chapter_3
 {
     class Exercise1
     {
-        /*
-        namespace fabulous
-            {
-                /// <summary> reference to name 'great'
-                ///     super.smashing.great
-                /// </summary>
-            }
-
-        namespace super
+        public void Show()
         {
-            namespace smashing
+            Console.WriteLine(@"
+            namespace fabulous
+                {
+                    /// <summary> reference to name 'great'
+                    ///     super.smashing.great
+                    /// </summary>
+                }
+
+            namespace super
             {
-                // definition of name 'great' 
+                namespace smashing
+                {
+                    // definition of name 'great' 
+                }
             }
+                            ");
+      
+
         }
-    */
     }
 }
 
