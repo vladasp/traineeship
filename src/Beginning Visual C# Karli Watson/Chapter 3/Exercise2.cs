@@ -1,13 +1,18 @@
-﻿namespace Chapter_3
+﻿using System;
+namespace Chapter_3
 {
     class Exercise2
     {
-        /*
-        • myVariablelsGood 
-        • 99Flake 
-        • _floor 
-        • time2GetJiggyWidIt 
-        • wrox.com          - incorect name
-        */
+        public void Show()
+        {
+            Console.WriteLine(@"
+                • myVariablelsGood 
+                • 99Flake 
+                • _floor 
+                • time2GetJiggyWidIt 
+                • wrox.com          - incorect name
+            ");
+            return;
+        }
     }
 }
