@@ -5,20 +5,13 @@ namespace ComplexNumbers
     class ComplexNumbers
     {
         double a;
-        string bi;
+        string b;
+        const string i = "i";
         public ComplexNumbers() { }
-        public ComplexNumbers(double value)
+        public ComplexNumbers(double realPart, string imaginaryPart)
         {
-            a = value;
-        }
-        public ComplexNumbers(string value)
-        {
-            bi = value;
-        }
-        public ComplexNumbers(double value1, string value2)
-        {
-            a = value1;
-            bi = value2;
+            a = realPart;
+            b = imaginaryPart;
         }
         public void NumToString()
         {

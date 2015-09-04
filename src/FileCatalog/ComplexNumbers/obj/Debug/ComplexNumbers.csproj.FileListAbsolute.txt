@@ -1,0 +1,3 @@
+D:\Source\Repos\traineeship\src\FileCatalog\ComplexNumbers\bin\Debug\ComplexNumbers.exe.config
+D:\Source\Repos\traineeship\src\FileCatalog\ComplexNumbers\obj\Debug\ComplexNumbers.exe
+D:\Source\Repos\traineeship\src\FileCatalog\ComplexNumbers\obj\Debug\ComplexNumbers.pdb

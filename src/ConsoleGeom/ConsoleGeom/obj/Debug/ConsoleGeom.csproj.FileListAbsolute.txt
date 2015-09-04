@@ -4,3 +4,5 @@ D:\Source\Repos\traineeship\src\ConsoleGeom\ConsoleGeom\bin\Debug\ConsoleGeom.pd
 D:\Source\Repos\traineeship\src\ConsoleGeom\ConsoleGeom\obj\Debug\ConsoleGeom.csprojResolveAssemblyReference.cache
 D:\Source\Repos\traineeship\src\ConsoleGeom\ConsoleGeom\obj\Debug\ConsoleGeom.exe
 D:\Source\Repos\traineeship\src\ConsoleGeom\ConsoleGeom\obj\Debug\ConsoleGeom.pdb
+D:\Repos\traineeship\src\ConsoleGeom\ConsoleGeom\bin\Debug\ConsoleGeom.exe.config
+D:\Repos\traineeship\src\ConsoleGeom\ConsoleGeom\obj\Debug\ConsoleGeom.pdb
