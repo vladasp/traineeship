@@ -13,8 +13,8 @@ namespace Chapter5
             Console.WriteLine(@"
 Будет ли компилироваться приведенный ниже код? Обоснуйте ответ. 
 string[] blab = new string[5] 
-string[5] = 5th string       - wrong designation of this array
-blab[5] = '5th string';      - right designation of this array
+string[5] = 5th string          - wrong designation of this array
+blab[5] = '5th string';         - right designation of this array
                             ");
         }
     }

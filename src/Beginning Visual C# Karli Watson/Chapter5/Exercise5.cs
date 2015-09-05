@@ -18,7 +18,6 @@ namespace Chapter5
             string rightWords = Console.ReadLine();
             char[] rightWordsArray = rightWords.ToArray();
             char[] converselyWordsArray = new char[rightWordsArray.Length];
-            Console.WriteLine("Right worlds {0}", rightWords);
             for (int i = rightWordsArray.Length-1; i >= 0; i--)
             {
                 for (int j = 0; j < converselyWordsArray.Length; j++)
@@ -28,8 +27,8 @@ namespace Chapter5
                  }
             }
                 string converselyWords = new string (converselyWordsArray);
-
-            Console.WriteLine("Right worlds {0}, convers worlds {1}", rightWords, converselyWords);
+            Console.WriteLine("Right worlds - {0}, convers worlds - {1}", rightWords, converselyWords);
+            Console.WriteLine("");
         }
     }
 }

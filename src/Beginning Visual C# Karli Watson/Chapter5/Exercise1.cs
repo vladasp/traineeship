@@ -12,7 +12,7 @@ namespace Chapter5
         {
             Console.WriteLine(@"
 Какая из следующих операций преобразования не может выполняться неявно: 
-a) int в short  -  this operanion
+a) int в short   -   this operanion
 б) short в int 
 в) boolв string 
 г) byte в float 

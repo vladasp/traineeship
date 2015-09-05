@@ -65,14 +65,14 @@ namespace Chapter5
                         {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise6);
                             Exercise6 exercise6 = new Exercise6();
-                            //exercise6.Show();
+                            exercise6.Show();
                             break;
                         }
                     case seventhControl:
                         {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise7);
                             Exercise7 exercise7 = new Exercise7();
-                            //exercise7.Show();
+                            exercise7.Show();
                             break;
                         }
                     case exitControl:

@@ -13,9 +13,8 @@ namespace Chapter5
         public void Show()
         {
             Console.WriteLine(@"
-Создайте на базе типа short код для перечисления color, содержащего все
-цвета радуги, а также черный и белый цвет.Может ли такое перечисление
-основываться на типе byte?
+Создайте на базе типа short код для перечисления color, содержащего все цвета радуги,
+а также черный и белый цвет.Может ли такое перечисление основываться на типе byte?
                             ");
             Console.WriteLine("Colors with short type");
             foreach (ColorsShort color in Enum.GetValues(typeof(ColorsShort)))
