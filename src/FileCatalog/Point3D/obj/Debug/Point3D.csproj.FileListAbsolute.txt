@@ -1,6 +1,0 @@
-D:\Source\Repos\traineeship\src\FileCatalog\Point3D\bin\Debug\Point3D.exe.config
-D:\Source\Repos\traineeship\src\FileCatalog\Point3D\bin\Debug\Point3D.exe
-D:\Source\Repos\traineeship\src\FileCatalog\Point3D\bin\Debug\Point3D.pdb
-D:\Source\Repos\traineeship\src\FileCatalog\Point3D\obj\Debug\Point3D.csprojResolveAssemblyReference.cache
-D:\Source\Repos\traineeship\src\FileCatalog\Point3D\obj\Debug\Point3D.exe
-D:\Source\Repos\traineeship\src\FileCatalog\Point3D\obj\Debug\Point3D.pdb
