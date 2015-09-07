@@ -38,15 +38,15 @@ namespace Chapter7
                     case thirdControl:
                         {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise3);
-                            //Exercise3 exercise3 = new Exercise3();
-                            //exercise3.Show();
+                            Exercise3 exercise3 = new Exercise3();
+                            exercise3.Show();
                             break;
                         }
                     case fourthControl:
                         {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise4);
-                            //Exercise4 exercise4 = new Exercise4();
-                            //exercise4.Show();
+                            Exercise4 exercise4 = new Exercise4();
+                            exercise4.Show();
                             break;
                         }
                     case exitControl:

@@ -8,6 +8,7 @@ namespace Chapter6
     {
         static void Main(string[] args)
         {
+            throw new Exception();
             bool isExit = false;
             int input;
             const int firstControl = (int)UserControl.Exercise1;
@@ -44,7 +45,7 @@ namespace Chapter6
                             Exercise3 exercise3 = new Exercise3();
                             SetChangeLine setChangeLine;
                             exercise3.Show();
-                            setChangeLine = new SetChangeLine(exercise3.SetConsoleReadLine);
+                            setChangeLine = exercise3.SetConsoleReadLine;
                             Console.WriteLine("Enter your name");
                             string name = Console.ReadLine();
                             Console.WriteLine("Enter your password");
