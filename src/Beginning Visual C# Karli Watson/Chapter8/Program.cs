@@ -25,36 +25,36 @@ namespace Chapter8
                     case firstControl:
                         {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise1);
-                            //Exercise1 exercise1 = new Exercise1();
-                            //exercise1.Show();
+                            Exercise1 exercise1 = new Exercise1();
+                            exercise1.Show();
                             break;
                         }
                     case secondControl:
                         {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise2);
-                            //Exercise2 exercise2 = new Exercise2();
-                            //exercise2.Show(args[0], args[1]);
+                            Exercise2 exercise2 = new Exercise2();
+                            exercise2.Show();
                             break;
                         }
                     case thirdControl:
                         {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise3);
-                            //Exercise3 exercise3 = new Exercise3();
-                            //exercise3.Show();
+                            Exercise3 exercise3 = new Exercise3();
+                            exercise3.Show();
                             break;
                         }
                     case fourthControl:
                         {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise4);
-                            //Exercise4 exercise4 = new Exercise4();
-                            //exercise4.Show();
+                            Exercise4 exercise4 = new Exercise4();
+                            exercise4.Show();
                             break;
                         }
                     case fifthControl:
                         {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise5);
-                            //Exercise5 exercise5 = new Exercise5();
-                            //exercise5.Show();
+                            Exercise5 exercise5 = new Exercise5();
+                            exercise5.Show();
                             break;
                         }
                     case exitControl:

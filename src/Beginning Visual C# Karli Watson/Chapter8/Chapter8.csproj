@@ -43,16 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CupOfCoffe.cs" />
+    <Compile Include="CupOfTea.cs" />
     <Compile Include="Exercise1.cs" />
     <Compile Include="Exercise2.cs" />
     <Compile Include="Exercise3.cs" />
     <Compile Include="Exercise4.cs" />
     <Compile Include="Exercise5.cs" />
+    <Compile Include="HotDrink.cs" />
+    <Compile Include="ICup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagramExercise4.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
