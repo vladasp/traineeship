@@ -1,6 +1,0 @@
-D:\Source\Repos\traineeship\src\Beginning Visual C# Karli Watson\Chapter4\bin\Debug\Chapter4.exe.config
-D:\Source\Repos\traineeship\src\Beginning Visual C# Karli Watson\Chapter4\bin\Debug\Chapter4.exe
-D:\Source\Repos\traineeship\src\Beginning Visual C# Karli Watson\Chapter4\bin\Debug\Chapter4.pdb
-D:\Source\Repos\traineeship\src\Beginning Visual C# Karli Watson\Chapter4\obj\Debug\Chapter4.exe
-D:\Source\Repos\traineeship\src\Beginning Visual C# Karli Watson\Chapter4\obj\Debug\Chapter4.pdb
-D:\Source\Repos\traineeship\src\Beginning Visual C# Karli Watson\Chapter4\obj\Debug\Chapter4.csprojResolveAssemblyReference.cache
