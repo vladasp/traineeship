@@ -1,6 +1,0 @@
-D:\Source\Repos\traineeship\src\FileCatalog\EncryptionAndDecryption\bin\Debug\EncryptionAndDecryption.exe.config
-D:\Source\Repos\traineeship\src\FileCatalog\EncryptionAndDecryption\bin\Debug\EncryptionAndDecryption.exe
-D:\Source\Repos\traineeship\src\FileCatalog\EncryptionAndDecryption\bin\Debug\EncryptionAndDecryption.pdb
-D:\Source\Repos\traineeship\src\FileCatalog\EncryptionAndDecryption\obj\Debug\EncryptionAndDecryption.csprojResolveAssemblyReference.cache
-D:\Source\Repos\traineeship\src\FileCatalog\EncryptionAndDecryption\obj\Debug\EncryptionAndDecryption.exe
-D:\Source\Repos\traineeship\src\FileCatalog\EncryptionAndDecryption\obj\Debug\EncryptionAndDecryption.pdb
