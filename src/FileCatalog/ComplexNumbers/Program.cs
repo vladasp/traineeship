@@ -11,9 +11,9 @@ namespace ComplexNumbers
             Console.WriteLine("Enter a");
             double a = program.ChangedLine();
             Console.WriteLine("Enter b");
-            string b = Convert.ToString(program.ChangedLine()) + "i";
+            double b = program.ChangedLine();
             ComplexNumbers complexNumber = new ComplexNumbers(a, b);
-            complexNumber.NumToString();
+            complexNumber.NumToString(a, b);
             const string addControl = "A";
             const string magnitudeControl = "M";
             const string stringControl = "S";
@@ -28,32 +28,21 @@ namespace ComplexNumbers
                 switch (input)
                 {
                     case magnitudeControl:
-                        {
-                            complexNumber.GetMagnitude();
-                            break;
-                        }
+                        complexNumber.GetMagnitude();
+                        break;
                     case stringControl:
-                        {
-                            complexNumber.NumToString();
-                            break;
-                        }
+                        complexNumber.NumToString(a, b);
+                        break;
                     case addControl:
-                        {
-                            Console.WriteLine("Enter real part of complex number");
-                            double a1 = program.ChangedLine();
-                            Console.WriteLine("Enter imaginary part of complex number");
-                            double b1 = program.ChangedLine();
-                            string bi1 = Convert.ToString(b1) + "i";
-                            complexNumber.Add(a1, bi1);
-                            break;
-                        }
+                        Console.WriteLine("Enter real part of complex number");
+                        double a1 = program.ChangedLine();
+                        Console.WriteLine("Enter imaginary part of complex number");
+                        double b1 = program.ChangedLine();
+                        complexNumber.Add(a1, b1);
+                        break;
                     case exitControl:
-                        {
-                            isExit = true; break;
-                        }
+                        isExit = true; break;
                     default: Instuctions(); break;
-
-
                 }
             }
         }
