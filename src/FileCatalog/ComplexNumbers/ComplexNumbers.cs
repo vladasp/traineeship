@@ -5,33 +5,37 @@ namespace ComplexNumbers
     class ComplexNumbers
     {
         double a;
-        string b;
+        double b;
         const string i = "i";
         public ComplexNumbers() { }
-        public ComplexNumbers(double realPart, string imaginaryPart)
+        public ComplexNumbers(double value1, double value2)
         {
-            a = realPart;
-            b = imaginaryPart;
+            a = value1;
+            b = value2;
         }
-        public void NumToString()
+        public void NumToString(double a, double b)
         {
-            string ai = Convert.ToString(a);
-            Console.Write("Number to string ({0}, {1})", ai, bi);
-            return;
+            string stringA = Convert.ToString(a);
+            string stringB = Convert.ToString(b);
+            Console.Write("Number to string ({0}, {1})", stringA, stringB);
         }
         public void GetMagnitude()
         {
-            double b = Convert.ToDouble(bi.Remove(bi.Length - 1, 1));
             double result = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
             Console.WriteLine("Magnitude of complex nuber: {0}", Math.Round(result, 2));
-            return;
         }
-        public void Add(double a2, string bi2)
+        public void Add(double newA, double newB)
         {
-            a = a + a2;
-            double b = Convert.ToDouble(bi.Remove(bi.Length - 1, 1)) + Convert.ToDouble(bi2.Remove(bi2.Length - 1, 1));
-            bi = Convert.ToString(b) + "i";
-            Console.WriteLine("New complex number {0}", Convert.ToString(a) + bi);
+            a += newA;
+            b += newB;
+            if (b > 0)
+            {
+                Console.WriteLine("New complex number {0}+{1}{2} ", Convert.ToString(a), Convert.ToString(b), i);
+            }
+            else
+            {
+                Console.WriteLine("New complex number {0}{1}{2}", Convert.ToString(a) + Convert.ToString(b) + i);
+            }
         }
     }
 }
