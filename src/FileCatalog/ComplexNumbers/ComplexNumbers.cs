@@ -8,33 +8,31 @@ namespace ComplexNumbers
         double b;
         const string i = "i";
         public ComplexNumbers() { }
-        public ComplexNumbers(double value1, double value2)
+        public ComplexNumbers(double realPart, double imaginaryPart)
         {
-            a = value1;
-            b = value2;
+            a = realPart;
+            b = imaginaryPart;
         }
-        public void NumToString(double a, double b)
+        public override string ToString()
         {
-            string stringA = Convert.ToString(a);
-            string stringB = Convert.ToString(b);
-            Console.Write("Number to string ({0}, {1})", stringA, stringB);
+            return "(" + a.ToString() + "; " + b.ToString() + ")";
         }
         public void GetMagnitude()
         {
             double result = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
             Console.WriteLine("Magnitude of complex nuber: {0}", Math.Round(result, 2));
         }
-        public void Add(double newA, double newB)
+        public void Add(double addedA, double addedB)
         {
-            a += newA;
-            b += newB;
+            a += addedA;
+            b += addedB;
             if (b > 0)
             {
-                Console.WriteLine("New complex number {0}+{1}{2} ", Convert.ToString(a), Convert.ToString(b), i);
+                Console.WriteLine("New complex number {0}+{1}{2}", a.ToString(), b.ToString(), i);
             }
             else
             {
-                Console.WriteLine("New complex number {0}{1}{2}", Convert.ToString(a) + Convert.ToString(b) + i);
+                Console.WriteLine("New complex number {0}{1}{2}", a.ToString(), b.ToString(), i);
             }
         }
     }
