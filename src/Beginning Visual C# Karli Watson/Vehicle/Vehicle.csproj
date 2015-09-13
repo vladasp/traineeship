@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AA5A08BE-B6CF-474F-BE99-A4EDE396DEFE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{EAF2200E-EFC2-4C45-ACAD-42BD5E37E145}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Point3D</RootNamespace>
-    <AssemblyName>Point3D</AssemblyName>
+    <RootNamespace>Vehicle</RootNamespace>
+    <AssemblyName>Vehicle</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,14 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassEventInt.cs" />
-    <Compile Include="ClassEventDouble.cs" />
-    <Compile Include="Point.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="424DoubleBogey.cs" />
+    <Compile Include="Car.cs" />
+    <Compile Include="Compact.cs" />
+    <Compile Include="FreightTrain.cs" />
+    <Compile Include="IHeavyLoadCarrier.cs" />
+    <Compile Include="IPassengerCarrier.cs" />
+    <Compile Include="PassengerTrain.cs" />
+    <Compile Include="Pickup.cs" />
+    <Compile Include="SUV.cs" />
+    <Compile Include="Train.cs" />
+    <Compile Include="Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="ClassDiagramVehicle.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
