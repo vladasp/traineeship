@@ -2,9 +2,9 @@
 
 namespace ConsoleGeom
 {
-    class ClassEvent
+    class EventHandler
     {
-        public double ChangedLine()
+        public double ChangeCosoleLine()
         {
             string parameterSet;
             double parameterGet = 0;
