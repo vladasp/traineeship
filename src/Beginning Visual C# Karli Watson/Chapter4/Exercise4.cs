@@ -43,9 +43,11 @@ namespace Chapter4
                         case 3:
                             Console.Write("@");
                             break;
-                    } Console.Write("\n");
-                } Console.ReadKey();
+                    } 
+                }
+                Console.Write("\n");
             }
+            Console.ReadKey();
         }
     }
 }
