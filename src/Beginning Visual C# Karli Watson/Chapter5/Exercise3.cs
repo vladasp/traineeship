@@ -15,12 +15,12 @@ namespace Chapter5
 чтобы в нем для сложных чисел использовалась следующая структура: 
 struct imagNum 
 { 
-public double real, imag;
+public double real, imag; 
 }
                             ");
-        double realCoord, imagCoord;
-        double realTemp, imagTemp, realTemp2, arg;
-        int iterations;
+        }
+    }
+}
         for (imagCoord = 1.2; imagCoord >= -1.2; imagCoord -= 0.05)
         {
             for (realCoord = -0.6; realCoord <= 1.77; realCoord += 0.03)

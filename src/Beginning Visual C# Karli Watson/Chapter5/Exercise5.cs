@@ -26,7 +26,7 @@ namespace Chapter5
                      i--;
                  }
             }
-            string converselyWords = new string (converselyWordsArray);
+                string converselyWords = new string (converselyWordsArray);
             Console.WriteLine("Right worlds - {0}, convers worlds - {1}", rightWords, converselyWords);
             Console.WriteLine("");
         }

@@ -17,6 +17,8 @@ a) int в short   -   this operanion
 в) boolв string 
 г) byte в float 
                             ");
+
+
         }
     }
 }
