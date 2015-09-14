@@ -16,33 +16,29 @@ namespace Chapter4
 варианты, когда оба числа больше 10, и предлагает в таком случае ввести два 
 других числа.
                             ");
-
-            int var1, var2;
-            bool isMore;
-            bool moreBothNum = false;
-            do
+        int var1, var2;
+        bool isMore;
+        bool moreBothNum = false;
+        do
+        {
+            Console.WriteLine("Enter first number");
+            var1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter second number");
+            var2 = Convert.ToInt32(Console.ReadLine());
+            isMore = ((var1 > 10) ^ (var2 > 10)) ? true : false;
+            if (isMore || !isMore && var1 < 10 && var2 < 10)
             {
-                Console.WriteLine("Enter first number");
-                var1 = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Enter second number");
-                var2 = Convert.ToInt32(Console.ReadLine());
-                isMore = ((var1 > 10) ^ (var2 > 10)) ? true : false;
-                if (isMore || !isMore && var1 < 10 && var2 < 10)
-                {
-                    Console.WriteLine("Both numbers ({0} and {1}) NO more than 10", var1, var2);
-                    Console.WriteLine("You need change values");
-                    moreBothNum = false;
-                }
-                else if (!isMore && var1 > 10 && var2 > 10)
-                {
-                    Console.WriteLine("Both numbers ({0} and {1}) more than 10", var1, var2);
-                    moreBothNum = true;
-                }
-                Console.WriteLine("");
-
-            } while (!moreBothNum);
-            return;
+                Console.WriteLine("Both numbers ({0} and {1}) NO more than 10\n", var1, var2);
+                Console.WriteLine("You need change values");
+                moreBothNum = false;
+            }
+            else if (!isMore && var1 > 10 && var2 > 10)
+            {
+                Console.WriteLine("Both numbers ({0} and {1}) more than 10\n", var1, var2);
+                moreBothNum = true;
+            }
+        } while (!moreBothNum);
+        return;
         }
-
     }
 }
