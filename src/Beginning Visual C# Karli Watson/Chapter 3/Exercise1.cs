@@ -21,8 +21,6 @@ namespace Chapter_3
                 }
             }
                             ");
-      
-
         }
     }
 }

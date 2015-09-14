@@ -1,59 +1,72 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Chapter_3
+namespace Chapter9
 {
     enum UserControl { Exercise1 = 1, Exercise2, Exercise3, Exercise4, Exercise5, Exit }
     class Program
-    { 
+    {
         static void Main(string[] args)
         {
-            UserControl usercontrol = new UserControl();
             bool isExit = false;
-            string input;
-            Instruction();
+            int input;
+            const int firstControl = (int)UserControl.Exercise1;
+            const int secondControl = (int)UserControl.Exercise2;
+            const int thirdControl = (int)UserControl.Exercise3;
+            const int fourthControl = (int)UserControl.Exercise4;
+            const int fifthControl = (int)UserControl.Exercise5;
+            const int exitControl = (int)UserControl.Exit;
             while (!isExit)
             {
-                input = Console.ReadLine();
-                Enum.TryParse(input, true, out usercontrol);
-                switch (usercontrol)
+                Console.WriteLine("|||For show solve of exercise from 1 to 5 enter relevant number,\n|||to exit enter 6");
+                input = Convert.ToInt32(Console.ReadLine());
+                switch (input)
                 {
-                    case UserControl.Exercise1:
+                    case firstControl:
+                        {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise1);
                             Exercise1 exercise1 = new Exercise1();
                             exercise1.Show();
                             break;
-                    case UserControl.Exercise2:
+                        }
+                    case secondControl:
+                        {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise2);
                             Exercise2 exercise2 = new Exercise2();
                             exercise2.Show();
                             break;
-                    case UserControl.Exercise3:
+                        }
+                    case thirdControl:
+                        {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise3);
                             Exercise3 exercise3 = new Exercise3();
                             exercise3.Show();
                             break;
-                    case UserControl.Exercise4:
+                        }
+                    case fourthControl:
+                        {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise4);
                             Exercise4 exercise4 = new Exercise4();
                             exercise4.Show();
                             break;
-                    case UserControl.Exercise5:
+                        }
+                    case fifthControl:
+                        {
                             Console.WriteLine("Solve of {0}", UserControl.Exercise5);
                             Exercise5 exercise5 = new Exercise5();
-                            exercise5.GetName();
-                            Console.ReadKey();
+                            exercise5.Show();
                             break;
-                    case UserControl.Exit:
+                        }
+                    case exitControl:
+                        {
                             break;
+                        }
                     default: Instruction(); break;
                 }
             }
         }
         static void Instruction()
         {
-            Console.WriteLine("|||For show solve of exercise from 1 to {0} enter relevant number,\n|||to exit enter {1}", 
-                Enum.GetNames(typeof(UserControl)).Length - 1, Enum.GetNames(typeof(UserControl)).Length);
+            Console.WriteLine("|||For show solve of exercise from 1 to 5 enter relevant number,\n|||to exit enter 6");
             return;
         }
     }

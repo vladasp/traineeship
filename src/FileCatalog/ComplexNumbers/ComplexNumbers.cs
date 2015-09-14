@@ -10,7 +10,7 @@ namespace ComplexNumbers
         public ComplexNumbers() { }
         public ComplexNumbers(double value1, double value2)
         {
-            a = value1;
+            a = realPart;
             b = value2;
         }
         public void NumToString(double a, double b)

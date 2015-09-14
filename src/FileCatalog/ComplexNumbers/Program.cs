@@ -2,51 +2,46 @@
 
 namespace ComplexNumbers
 {
+    enum Control { A = 1, M, S, E }
     class Program
     {
         static void Main(string[] args)
         {
             Program program = new Program();
-
-            Console.WriteLine("Enter a");
-            double a = program.ChangedLine();
-            Console.WriteLine("Enter b");
-            double b = program.ChangedLine();
+            Control control = new Control();
+            Console.WriteLine("Enter real part of complex number");
+            double a = program.ChangConsoleLine();
+            Console.WriteLine("Enter imaginary part of complex number");
+            double b = program.ChangConsoleLine();
             ComplexNumbers complexNumber = new ComplexNumbers(a, b);
-            complexNumber.NumToString(a, b);
-            const string addControl = "A";
-            const string magnitudeControl = "M";
-            const string stringControl = "S";
-            const string exitControl = "E";
 
             bool isExit = false;
-            string input;
-
             while (!isExit)
             {
-                input = Console.ReadLine();
-                switch (input)
+                string input = Console.ReadLine();
+                Enum.TryParse(input, true, out control);
+                switch (control)
                 {
-                    case magnitudeControl:
+                    case Control.M:
                         complexNumber.GetMagnitude();
                         break;
-                    case stringControl:
-                        complexNumber.NumToString(a, b);
+                    case Control.S:
+                        Console.WriteLine("Complex number to string {0}", complexNumber.ToString());
                         break;
-                    case addControl:
-                        Console.WriteLine("Enter real part of complex number");
-                        double a1 = program.ChangedLine();
-                        Console.WriteLine("Enter imaginary part of complex number");
-                        double b1 = program.ChangedLine();
-                        complexNumber.Add(a1, b1);
+                    case Control.A:
+                        Console.WriteLine("Enter added real part of complex number");
+                        double addedA = program.ChangConsoleLine();
+                        Console.WriteLine("Enter added imaginary part of complex number");
+                        double addedB = program.ChangConsoleLine();
+                        complexNumber.Add(addedA, addedB);
                         break;
-                    case exitControl:
+                    case Control.E:
                         isExit = true; break;
                     default: Instuctions(); break;
                 }
             }
         }
-        public double ChangedLine()
+        public double ChangConsoleLine()
         {
             string parameterSet;
             double parameterGet = 0;
@@ -72,7 +67,8 @@ namespace ComplexNumbers
         }
         static void Instuctions()
         {
-            Console.WriteLine("||To magnitude number enter 'M',\n||to show number to string enter 'S',\n||to add complex number enter 'A',\n||to exit enter 'E'");
+            Console.WriteLine("||To magnitude number enter {0},\n||to show number to string enter {1},\n||to add complex number enter {2},\n||to exit enter {3}",
+                Control.M.ToString(), Control.S.ToString(), Control.A.ToString(), Control.E.ToString());
         }
 
     }

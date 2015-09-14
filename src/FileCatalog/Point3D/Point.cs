@@ -4,17 +4,15 @@ namespace Point3D
 {
     class Point
     {
-
         public double x; public double y; public double z;
-
         public void AddPoint()
         {
             Console.WriteLine("Enter coordinate X");
-            x = ChangedLineDouble();
+            x = ChangedConsoleLine();
             Console.WriteLine("Enter coordinate Y");
-            y = ChangedLineDouble();
+            y = ChangedConsoleLine();
             Console.WriteLine("Enter coordinate Z");
-            z = ChangedLineDouble();
+            z = ChangedConsoleLine();
             return;
         }
 
@@ -25,14 +23,14 @@ namespace Point3D
             oldX = x; oldY = y; oldZ = z;
 
             Console.WriteLine("Enter new X");
-            _x = ChangedLineDouble();
+            _x = ChangedConsoleLine();
             Console.WriteLine("Enter new Y");
-            _y = ChangedLineDouble();
+            _y = ChangedConsoleLine();
             Console.WriteLine("Enter new Z");
-            _z = ChangedLineDouble();
-
+            _z = ChangedConsoleLine();
             x = _x; y = _y; z = _z;
-            Console.WriteLine("New x = {0} old x = {3}, new y = {1} old y = {4}, new z = {2} old z = {5}", x, y, z, oldX, oldY, oldZ);
+            Console.WriteLine("New x = {0} old x = {3}, new y = {1} old y = {4}, new z = {2} old z = {5}", 
+                x, y, z, oldX, oldY, oldZ);
             return;
         }
 
@@ -46,13 +44,12 @@ namespace Point3D
             return;
         }
 
-        public double ChangedLineDouble()
+        public double ChangedConsoleLine()
         {
             string parameterSet;
             double parameterGet = 0;
             double number;
             bool canPars = false;
-
             do
             {
                 parameterSet = Console.ReadLine();
