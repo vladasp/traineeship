@@ -22,14 +22,12 @@ namespace Chapter5
                 Console.WriteLine("Color name {0} and short type value {1}", color, (short)color);
             }
             Console.WriteLine("");
-
             Console.WriteLine("Colors with byte type");
             foreach (ColorsByte color in Enum.GetValues(typeof(ColorsByte)))
             {
                 Console.WriteLine("Color name {0} and byte type value {1}", color, (byte)color);
             }
             Console.WriteLine("");
-
             return;
         }
     }
