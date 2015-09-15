@@ -8,6 +8,11 @@ namespace Chapter5
 {
     class Exercise3
     {
+        struct imagNum
+        {
+            public double real, imag;
+        }
+
         public void Show()
         {
             Console.WriteLine(@"
@@ -18,45 +23,45 @@ struct imagNum
 public double real, imag; 
 }
                             ");
-        }
-    }
-}
-        for (imagCoord = 1.2; imagCoord >= -1.2; imagCoord -= 0.05)
-        {
-            for (realCoord = -0.6; realCoord <= 1.77; realCoord += 0.03)
+            imagNum coord = new imagNum();
+            imagNum temp = new imagNum();
+            double realTemp2, arg;
+            int iterations;
+            for (coord.imag = 1.2; coord.imag >= -1.2; coord.imag -= 0.05)
             {
-                iterations = 0;
-                realTemp = realCoord;
-                imagTemp = imagCoord;
-                arg = (realCoord * realCoord) + (imagCoord * imagCoord);
-                while ((arg < 4) && (iterations < 40))
+                for (coord.real = -0.6; coord.real <= 1.77; coord.real += 0.03)
                 {
-                    realTemp2 = (realTemp * realTemp) - (imagTemp * imagTemp) - realCoord;
-                    imagTemp = (2 * realTemp * imagTemp) - imagCoord;
-                    realTemp = realTemp2;
-                    arg = (realTemp * realTemp) + (imagTemp * imagTemp);
-                    iterations += 1;
+                    iterations = 0;
+                    temp.real = coord.real;
+                    temp.imag = coord.imag;
+                    arg = (coord.real * coord.real) + (coord.imag * coord.imag);
+                    while ((arg < 4) && (iterations < 40))
+                    {
+                        realTemp2 = (temp.real * temp.real) - (temp.imag * temp.imag) - coord.real;
+                        temp.imag = (2 * temp.real * temp.imag) - coord.imag;
+                        temp.real = realTemp2;
+                        arg = (temp.real * temp.real) + (temp.imag * temp.imag);
+                        iterations += 1;
+                    }
+                    switch (iterations % 4)
+                    {
+                        case 0:
+                            Console.Write(".");
+                            break;
+                        case 1:
+                            Console.Write("o");
+                            break;
+                        case 2:
+                            Console.Write("O");
+                            break;
+                        case 3:
+                            Console.Write("@");
+                            break;
+                    }
                 }
-                switch (iterations % 4)
-                {
-                    case 0:
-                        Console.Write(".");
-                        break;
-                    case 1:
-                        Console.Write("o");
-                        break;
-                    case 2:
-                        Console.Write("O");
-                        break;
-                    case 3:
-                        Console.Write("@");
-                        break;
-                }
+                Console.Write("\n");
             }
-            Console.Write("\n");
-        }
-        Console.ReadKey();
-
+            Console.ReadKey();
         }
     }
 }
