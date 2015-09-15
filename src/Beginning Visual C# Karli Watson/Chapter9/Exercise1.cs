@@ -23,6 +23,5 @@ public class myDerivedClass : MyClass
 Access identifier sealed does not provide inheritance
                             ");
         }
-
     }
 }
