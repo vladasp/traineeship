@@ -26,6 +26,5 @@ namespace Chapter8
     (Сорт чая).                            
                             ");
         }
-
     }
 }
