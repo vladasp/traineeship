@@ -21,8 +21,8 @@ namespace Chapter7
 ключевого слова checked, как указано ниже в примере. Обязательно используйте
 этот код в приложении.)
                             ");
-            Console.WriteLine("Enter a value from 1 to 4 for programm wright work, and other value to get exeption");
-            for (byte i = 0; i <= 6; i++)
+            Console.WriteLine("The values from 1 to 4 provide programm wright work,\nand other value get exeption\n");
+            for (byte i = 1; i <= Enum.GetNames(typeof(orientation)).Length; i++)
             {
                 myByte = i;
                 try
