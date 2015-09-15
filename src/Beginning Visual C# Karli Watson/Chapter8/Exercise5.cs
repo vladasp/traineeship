@@ -39,8 +39,8 @@ namespace Chapter8
             coffe.Drink();
             tea.AddMilk();
             tea.Drink();
-            ICup cupcofee = (ICup)coffe;
-            ICup cuptea = (ICup)tea;
+            ICup cupcofee = coffe;
+            ICup cuptea = tea;
             cupcofee.Wash();
             cuptea.Wash();
         }

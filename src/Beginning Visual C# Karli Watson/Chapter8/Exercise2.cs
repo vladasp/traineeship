@@ -16,7 +16,6 @@ namespace Chapter8
 
 No, its works automaticly.
                             ");
-
         }
     }
 }
