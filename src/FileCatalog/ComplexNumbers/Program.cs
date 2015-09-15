@@ -45,13 +45,12 @@ namespace ComplexNumbers
         {
             string parameterSet;
             double parameterGet = 0;
-            double number;
+            int number;
             bool canPars = false;
-
             do
             {
                 parameterSet = Console.ReadLine();
-                if (double.TryParse(parameterSet, out number))
+                if (int.TryParse(parameterSet, out number))
                 {
                     parameterGet = Convert.ToDouble(parameterSet);
                     canPars = true;
