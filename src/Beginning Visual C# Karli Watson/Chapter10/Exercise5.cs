@@ -11,8 +11,8 @@ namespace Chapter10
 Напишите клиентское консольное приложение для библиотеки  Ch10CardLib, 
 позволяющее вытягивать сразу пять карт из перетасованной колоды (объекта Deck). 
 Если все пять карт оказываются одной масти, их названия должны быть выведены 
-на консоль вместе с текстом Flush!; в противном случае приложение должно завершит
-работу после просмотра 50 карт, с выводом текста No flush. 
+на консоль вместе с текстом Flush!; в противном случае приложение должно
+завершит работу после просмотра 50 карт, с выводом текста No flush. 
                             ");
             Deck myDeck = new Deck();
             myDeck.Shuffle();
@@ -21,11 +21,10 @@ namespace Chapter10
             for (int i = 1; i <= 5; i++)
             {
                 Card tempCard = myDeck.GetCard(i);
-                Console.Write(tempCard.ToString());
                 if (i != 5)
-                    Console.Write(", ");
+                    Console.WriteLine("{0},", tempCard.ToString());
                 else
-                    Console.WriteLine();
+                    Console.WriteLine("{0}\n", tempCard.ToString());
             }
             Console.ReadKey();
         }
