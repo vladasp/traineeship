@@ -11,8 +11,13 @@ namespace Chapter10
         public void Show()
         {
             Console.WriteLine(@"
+Частичные методы должны обязательно использовать void 
+в качестве возвращаемого типа. Объясните причину.
+
+Its need beacorse partial methods dont returned method. 
+A partial method has its signature defined in one part of a partial type,
+and its implementation defined in another part of the type.
                             ");
         }
-
     }
 }

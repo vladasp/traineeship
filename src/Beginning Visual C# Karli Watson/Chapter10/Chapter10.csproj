@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CardLibrary">
+      <HintPath>.\CardLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +51,9 @@
     <Compile Include="Exercise3.cs" />
     <Compile Include="Exercise4.cs" />
     <Compile Include="Exercise5.cs" />
+    <Compile Include="MyClass.cs" />
+    <Compile Include="MyCopyableClass.cs" />
+    <Compile Include="MyDerivedClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
