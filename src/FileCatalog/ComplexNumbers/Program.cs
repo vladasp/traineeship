@@ -10,9 +10,9 @@ namespace ComplexNumbers
             Program program = new Program();
             Control control = new Control();
             Console.WriteLine("Enter real part of complex number");
-            double a = program.ChangConsoleLine();
+            double a = program.ChangeConsoleLine();
             Console.WriteLine("Enter imaginary part of complex number");
-            double b = program.ChangConsoleLine();
+            double b = program.ChangeConsoleLine();
             ComplexNumbers complexNumber = new ComplexNumbers(a, b);
 
             bool isExit = false;
@@ -30,9 +30,9 @@ namespace ComplexNumbers
                         break;
                     case Control.A:
                         Console.WriteLine("Enter added real part of complex number");
-                        double addedA = program.ChangConsoleLine();
+                        double addedA = program.ChangeConsoleLine();
                         Console.WriteLine("Enter added imaginary part of complex number");
-                        double addedB = program.ChangConsoleLine();
+                        double addedB = program.ChangeConsoleLine();
                         complexNumber.Add(addedA, addedB);
                         break;
                     case Control.E:
@@ -41,18 +41,18 @@ namespace ComplexNumbers
                 }
             }
         }
-        public double ChangConsoleLine()
+        public double ChangeConsoleLine()
         {
             string parameterSet;
             double parameterGet = 0;
-            int number;
+            double number;
             bool canPars = false;
             do
             {
                 parameterSet = Console.ReadLine();
-                if (int.TryParse(parameterSet, out number))
+                if (double.TryParse(parameterSet, out number))
                 {
-                    parameterGet = Convert.ToDouble(parameterSet);
+                    parameterGet = number;
                     canPars = true;
                 }
                 else
