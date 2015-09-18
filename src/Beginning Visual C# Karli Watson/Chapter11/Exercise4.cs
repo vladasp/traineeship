@@ -11,6 +11,8 @@ namespace Chapter11
         public void Show()
         {
             Console.WriteLine(@"
+Реализуйте в классе People интерфейс ICloneable для обеспечения 
+возможности глубокого копирования.
                             ");
         }
     }

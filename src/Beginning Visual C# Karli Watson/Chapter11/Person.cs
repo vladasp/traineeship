@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chapter11
 {
-    public class Person: DictionaryBase
+    public class Person: DictionaryBase, ICloneable
     {
         private string name;
         private int age;
@@ -57,24 +57,38 @@ namespace Chapter11
             }
 
         }
-        public static bool operator >=(Person persone1, Person persone2)
+        public Person this[int idPerson]
         {
-            return (persone1.age >= persone2.age);
-        }
-        public static bool operator <(Person persone1, Person persone2)
-        {
-            return !(persone1 >= persone2);
-        }
-        public static bool operator <=(Person persone1, Person persone2)
-        {
-            return (persone1.age <= persone2.age);
-        }
-        public static bool operator >(Person persone1, Person persone2)
-        {
-            return !(persone1 <= persone2);
-        }
+            get
+            {
+                return (Person)Dictionary[idPerson];
+            }
+            set
+            {
+                Dictionary[idPerson] = value;
+            }
 
-
-
+        }
+        public static bool operator >=(Person person1, Person person2)
+        {
+            return (person1.age >= person2.age);
+        }
+        public static bool operator <(Person person1, Person person2)
+        {
+            return !(person1 >= person2);
+        }
+        public static bool operator <=(Person person1, Person person2)
+        {
+            return (person1.age <= person2.age);
+        }
+        public static bool operator >(Person person1, Person person2)
+        {
+            return !(person1.age <= person2.age);
+        }
+        public object Clone()
+        {
+            Person person = new Person();
+            return person;
+        }
     }
 }

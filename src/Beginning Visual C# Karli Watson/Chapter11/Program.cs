@@ -10,6 +10,7 @@ namespace Chapter11
         {
             UserControl usercontrol = new UserControl();
             Person namesList = new Person();
+            People people = new People();
             namesList.Add("Vlad", new Person("Vlad", 28));
             namesList.Add("Alina", new Person("Alina", 24));
             namesList.Add("Ivan", new Person("Ivan", 31));
@@ -45,16 +46,26 @@ namespace Chapter11
                         Console.WriteLine("Solve of {0}", UserControl.Exercise3);
                         Exercise3 exercise3 = new Exercise3();
                         exercise3.Show();
+                        people.GetOldest(namesList);
                         break;
                     case UserControl.Exercise4:
                         Console.WriteLine("Solve of {0}", UserControl.Exercise4);
                         Exercise4 exercise4 = new Exercise4();
                         exercise4.Show();
+                        People people1 = new People();
+                        People people2 = (People)people1.Clone();
+                        people1 = people;
+                        Console.WriteLine("Old People class instance {0},\nNew People class instance {1}",
+                            people1.ToString(), people2.ToString());
                         break;
                     case UserControl.Exercise5:
                         Console.WriteLine("Solve of {0}", UserControl.Exercise5);
                         Exercise5 exercise5 = new Exercise5();
                         exercise5.Show();
+                        foreach (int age in people.Ages)
+                        {
+                            Console.WriteLine(people.ToString());
+                        }
                         break;
                     case UserControl.Exit: isExit = true; break;
                     default: Instruction(); break;

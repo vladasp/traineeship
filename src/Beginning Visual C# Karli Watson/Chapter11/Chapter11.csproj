@@ -48,6 +48,7 @@
     <Compile Include="Exercise3.cs" />
     <Compile Include="Exercise4.cs" />
     <Compile Include="Exercise5.cs" />
+    <Compile Include="People.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
