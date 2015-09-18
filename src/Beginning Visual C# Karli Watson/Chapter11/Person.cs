@@ -57,5 +57,24 @@ namespace Chapter11
             }
 
         }
+        public static bool operator >=(Person persone1, Person persone2)
+        {
+            return (persone1.age >= persone2.age);
+        }
+        public static bool operator <(Person persone1, Person persone2)
+        {
+            return !(persone1 >= persone2);
+        }
+        public static bool operator <=(Person persone1, Person persone2)
+        {
+            return (persone1.age <= persone2.age);
+        }
+        public static bool operator >(Person persone1, Person persone2)
+        {
+            return !(persone1 <= persone2);
+        }
+
+
+
     }
 }

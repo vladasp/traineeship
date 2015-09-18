@@ -9,6 +9,12 @@ namespace Chapter11
         static void Main(string[] args)
         {
             UserControl usercontrol = new UserControl();
+            Person namesList = new Person();
+            namesList.Add("Vlad", new Person("Vlad", 28));
+            namesList.Add("Alina", new Person("Alina", 24));
+            namesList.Add("Ivan", new Person("Ivan", 31));
+            namesList.Add("Luda", new Person("Ludmila", 21));
+
             bool isExit = false;
             string input;
             Instruction();
@@ -22,11 +28,6 @@ namespace Chapter11
                         Console.WriteLine("Solve of {0}", UserControl.Exercise1);
                         Exercise1 exercise1 = new Exercise1();
                         exercise1.Show();
-                        Person namesList = new Person();
-                        namesList.Add("Vlad", new Person("Vlad",28));
-                        namesList.Add("Alina", new Person("Alina", 24));
-                        namesList.Add("Ivan", new Person("Ivan", 31));
-                        namesList.Add("Luda", new Person("Ludmila", 21));
                         Console.WriteLine(namesList["Vlad"].Name);
                         foreach (DictionaryEntry personEntry in namesList)
                         {
@@ -37,6 +38,8 @@ namespace Chapter11
                         Console.WriteLine("Solve of {0}", UserControl.Exercise2);
                         Exercise2 exercise2 = new Exercise2();
                         exercise2.Show();
+                        Console.WriteLine("{0} older then {1}: {2}", 
+                            namesList["Vlad"].Name, namesList["Alina"].Name, namesList["Vlad"] > namesList["Alina"]);
                         break;
                     case UserControl.Exercise3:
                         Console.WriteLine("Solve of {0}", UserControl.Exercise3);
