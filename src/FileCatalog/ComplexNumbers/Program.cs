@@ -43,22 +43,20 @@ namespace ComplexNumbers
         }
         public double ChangeConsoleLine()
         {
-            string parameterSet;
+            string parameterSet = "";
             double parameterGet = 0;
             double number;
-            bool canPars = false;
+            bool canPars = double.TryParse(parameterSet, out number);
             do
             {
                 parameterSet = Console.ReadLine();
-                if (double.TryParse(parameterSet, out number))
+                if (canPars)
                 {
                     parameterGet = number;
-                    canPars = true;
                 }
                 else
                 {
                     Console.WriteLine("Only numbers");
-                    canPars = false;
                 }
             }
             while (!canPars);
