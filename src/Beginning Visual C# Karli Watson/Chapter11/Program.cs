@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace Chapter11
 {
@@ -21,6 +22,16 @@ namespace Chapter11
                         Console.WriteLine("Solve of {0}", UserControl.Exercise1);
                         Exercise1 exercise1 = new Exercise1();
                         exercise1.Show();
+                        Person namesList = new Person();
+                        namesList.Add("Vlad", new Person("Vlad",28));
+                        namesList.Add("Alina", new Person("Alina", 24));
+                        namesList.Add("Ivan", new Person("Ivan", 31));
+                        namesList.Add("Luda", new Person("Ludmila", 21));
+                        Console.WriteLine(namesList["Vlad"].Name);
+                        foreach (DictionaryEntry personEntry in namesList)
+                        {
+                           Console.WriteLine("Person {0} ({1} years old)", ((Person)personEntry.Value).Name, ((Person)personEntry.Value).Age);
+                        }
                         break;
                     case UserControl.Exercise2:
                         Console.WriteLine("Solve of {0}", UserControl.Exercise2);
