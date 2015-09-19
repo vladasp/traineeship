@@ -18,25 +18,42 @@ namespace Chapter11
         {
              person = persons;
         }
-        public List<Person> GetOldest(Person person)
+
+        public List<Person> GetOldest()
         {
             List<Person> oldestPersonList = new List<Person>();
-            for (int i = 0; i < person.Count; i++)
+            foreach (DictionaryEntry item in Dictionary)    
             {
-                for (int j = i + 1; j < person.Count; j++)
+                if (oldestPersonList.Count == 0)
                 {
-                    if (person[i] < person[j])
+                    oldestPersonList.Add((Person)item.Value);
+                }
+                else if ((Person)item.Value >= oldestPersonList[0])
+                {
+                    if ((Person)item.Value >= oldestPersonList[0] && (Person)item.Value <= oldestPersonList[0])
                     {
-                        var oldPerson = person[j];
-                        var youngPerson = person[i];
-                        person[i] = oldPerson;
-                        person[j] = youngPerson;
+                        oldestPersonList.Add((Person)item.Value);
+                    }
+                    else
+                    {
+                        oldestPersonList.Clear();
+                        oldestPersonList.Add((Person)item.Value);
                     }
                 }
             }
-            Console.WriteLine(person);
+            Console.WriteLine("Oldes persons are:");
+            foreach (Person p in oldestPersonList)
+            {
+                Console.WriteLine("Name {0} Age {1}", p.Name, p.Age);
+            }
             return oldestPersonList;
         }
+
+        public void Add(string idName, Person myPerson)
+        {
+            Dictionary.Add(idName, myPerson);
+        }
+
         public object Clone()
         {
             People people = new People(person.Clone() as Person);
@@ -44,11 +61,11 @@ namespace Chapter11
         }
         public IEnumerable Ages
         {
-            get 
+            get
             {
                 foreach (object person in Dictionary.Values)
                     yield return (person as Person).Age;
-            } 
+            }
         }
     }
 }

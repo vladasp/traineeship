@@ -11,11 +11,12 @@ namespace Chapter11
             UserControl usercontrol = new UserControl();
             Person namesList = new Person();
             People people = new People();
-            namesList.Add("Vlad", new Person("Vlad", 28));
-            namesList.Add("Alina", new Person("Alina", 24));
-            namesList.Add("Ivan", new Person("Ivan", 31));
-            namesList.Add("Luda", new Person("Ludmila", 21));
-
+            DateTime t = DateTime.Now;
+            people.Add("Vlad", new Person("Vlad", 28));
+            people.Add("Alina", new Person("Alina", 24));
+            people.Add("Ivan", new Person("Ivan", 31));
+            people.Add("Luda", new Person("Ludmila", 21));
+            people.Add("Piter", new Person("Piter", 31));
             bool isExit = false;
             string input;
             Instruction();
@@ -30,7 +31,7 @@ namespace Chapter11
                         Exercise1 exercise1 = new Exercise1();
                         exercise1.Show();
                         Console.WriteLine(namesList["Vlad"].Name);
-                        foreach (DictionaryEntry personEntry in namesList)
+                        foreach (DictionaryEntry personEntry in people)
                         {
                            Console.WriteLine("Person {0} ({1} years old)", ((Person)personEntry.Value).Name, ((Person)personEntry.Value).Age);
                         }
@@ -46,7 +47,7 @@ namespace Chapter11
                         Console.WriteLine("Solve of {0}", UserControl.Exercise3);
                         Exercise3 exercise3 = new Exercise3();
                         exercise3.Show();
-                        people.GetOldest(namesList);
+                        people.GetOldest();
                         break;
                     case UserControl.Exercise4:
                         Console.WriteLine("Solve of {0}", UserControl.Exercise4);
@@ -64,7 +65,7 @@ namespace Chapter11
                         exercise5.Show();
                         foreach (int age in people.Ages)
                         {
-                            Console.WriteLine(people.ToString());
+                            Console.WriteLine(age);
                         }
                         break;
                     case UserControl.Exit: isExit = true; break;
