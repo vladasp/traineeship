@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter10", "Chapter10\Chap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardLibrary", "CardLibrary\CardLibrary.csproj", "{CAB49A92-5298-4A11-948E-C0ED882712FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter11", "Chapter11\Chapter11.csproj", "{B4A6C2E7-D1FF-42B9-9B08-016634126C5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{CAB49A92-5298-4A11-948E-C0ED882712FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAB49A92-5298-4A11-948E-C0ED882712FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAB49A92-5298-4A11-948E-C0ED882712FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4A6C2E7-D1FF-42B9-9B08-016634126C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4A6C2E7-D1FF-42B9-9B08-016634126C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4A6C2E7-D1FF-42B9-9B08-016634126C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4A6C2E7-D1FF-42B9-9B08-016634126C5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
