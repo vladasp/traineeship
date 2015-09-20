@@ -26,6 +26,10 @@ namespace Chapter12
                         Console.WriteLine("Solve of {0}", UserControl.Exercise2);
                         Exercise2 exercise2 = new Exercise2();
                         exercise2.Show();
+                        Vector vector1 = new Vector(10, 10);
+                        Vector vector2 = new Vector(15, 15);
+                        Console.WriteLine("Scalar multiply {0} of vectors {1} and {2}", 
+                            vector1 * vector2, vector1, vector2);
                         break;
                     case UserControl.Exercise3:
                         Console.WriteLine("Solve of {0}", UserControl.Exercise3);

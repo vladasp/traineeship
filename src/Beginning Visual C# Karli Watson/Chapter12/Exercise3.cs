@@ -13,6 +13,7 @@ namespace Chapter12
             Console.WriteLine(@"
 Что неверно в следующем коде? Устраните ошибку.
 public class Instantiator<T>
+where T : new()               - missing this line
 {
   public T instance;
  

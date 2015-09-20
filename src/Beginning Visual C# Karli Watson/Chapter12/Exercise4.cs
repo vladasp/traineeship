@@ -12,13 +12,14 @@ namespace Chapter12
         {
             Console.WriteLine(@"
 Что неверно в следующем коде? Устраните ошибку.
-public class StringGetter<T>
+public class StringGetter<T1>
 {
-  public string GetString<T>(T item)
+  public string GetString<T2>(T2 item)
   {
     return item.ToString();
   }
 }
+We can't use one of genetic class and method names.
                             ");
         }
     }

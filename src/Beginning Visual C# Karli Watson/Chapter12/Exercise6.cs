@@ -16,6 +16,7 @@ public interface IMethaneProducer<out T>
 {
    void BelchAt(T target);
 }
+No. Wrong variance of T.
                             ");
         }
     }
