@@ -21,6 +21,11 @@ namespace Chapter13
                         Console.WriteLine("Solve of {0}", UserControl.Exercise1);
                         Exercise1 exercise1 = new Exercise1();
                         exercise1.Show();
+                        Connection myConnection = new Connection();
+                        Display myDisplay = new Display();
+                        myConnection.MessageArrived += new MessageHandler(myDisplay.DisplayMessage);
+                        myConnection.Connect();
+                        Console.ReadKey();
                         break;
                     case UserControl.Exercise2:
                         Console.WriteLine("Solve of {0}", UserControl.Exercise2);
