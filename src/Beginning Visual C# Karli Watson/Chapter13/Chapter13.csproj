@@ -47,6 +47,7 @@
     <Compile Include="Display.cs" />
     <Compile Include="Exercise1.cs" />
     <Compile Include="Exercise2.cs" />
+    <Compile Include="MessageArrivedEventArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

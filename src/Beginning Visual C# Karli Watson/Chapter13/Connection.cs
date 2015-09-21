@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chapter13
 {
-    public delegate void MessageHandler(object source, EventArgs e);
+    public delegate void MessageHandler(Connection source, EventArgs e);
     public class Connection
     {
         public event MessageHandler MessageArrived;
@@ -32,7 +32,7 @@ namespace Chapter13
             Console.WriteLine("Argument: {0}", e);
             if ((random.Next(9) == 0) && (MessageArrived != null))
             {
-                MessageArrived("Hello Mum!", e);
+                MessageArrived(this, new MessageArrivedEventArgs("Hello Mum!"));
             }
         }
     }
