@@ -46,10 +46,11 @@ namespace ComplexNumbers
             string parameterSet = "";
             double parameterGet = 0;
             double number;
-            bool canPars = double.TryParse(parameterSet, out number);
+            bool canPars;
             do
             {
                 parameterSet = Console.ReadLine();
+                canPars = double.TryParse(parameterSet, out number);
                 if (canPars)
                 {
                     parameterGet = number;
