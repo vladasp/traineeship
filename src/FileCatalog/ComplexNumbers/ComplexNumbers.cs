@@ -8,16 +8,16 @@ namespace ComplexNumbers
         double b;
         const string i = "i";
         public ComplexNumbers() { }
-        public ComplexNumbers(double value1, double value2)
+        public ComplexNumbers(double realPart, double imaginary)
         {
             a = realPart;
-            b = value2;
+            b = imaginary;
         }
-        public void NumToString(double a, double b)
+        public override string ToString()
         {
             string stringA = Convert.ToString(a);
             string stringB = Convert.ToString(b);
-            Console.Write("Number to string ({0}, {1})", stringA, stringB);
+            return "(" + stringA +", " + stringB + ")";
         }
         public void GetMagnitude()
         {
