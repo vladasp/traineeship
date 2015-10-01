@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fourier_transform.Properties
+namespace FourierTransform.Properties
 {
 
 

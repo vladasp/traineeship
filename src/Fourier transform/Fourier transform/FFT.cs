@@ -6,26 +6,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fourier_transform
+namespace FourierTransform
 {
     public class FFT
     {
         /// <summary>
-        /// Вычисление поворачивающего модуля e^(-i*2*PI*k/N)
+        /// Calculation turning module e^(-i*2*PI*k/N)
         /// </summary>
         /// <param name="k"></param>
         /// <param name="N"></param>
         /// <returns></returns>
-        private  Complex w(int k, int N)
+        private Complex w(int k, int N)
         {            if (k % N == 0) return 1;
             double arg = -2 * Math.PI * k / N;
             return new Complex(Math.Cos(arg), Math.Sin(arg));
         }
         /// <summary>
-        /// Возвращает спектр сигнала
+        /// Returns the signal spectrum
         /// </summary>
-        /// <param name="x">Массив значений сигнала. Количество значений должно быть степенью 2</param>
-        /// <returns>Массив со значениями спектра сигнала</returns>
+        /// <param name="x">An array of signal values. The number of values must be a power of 2</param>
+        /// <returns>An array with the values of the signal</returns>
         public Complex[] fft(Complex[] x)
         {
             Complex[] X;
@@ -57,9 +57,9 @@ namespace Fourier_transform
             return X;
         }
         /// <summary>
-        /// Центровка массива значений полученных в fft (спектральная составляющая при нулевой частоте будет в центре массива)
+        /// Centering an array of values obtained in fft (spectral component at zero frequency will be at the center of the array)
         /// </summary>
-        /// <param name="X">Массив значений полученный в fft</param>
+        /// <param name="X">An array of values obtained in fft</param>
         /// <returns></returns>
         public Complex[] nfft(Complex[] X)
         {
