@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace CleanCodeCup
 {
-    class DataInputOutputManager
+    public static class DataInputOutputManager
     {
-        public void OutputMessager(string message)
+        public static void OutputMessager(string message)
         {
             Console.WriteLine(message);
         }
-        public void OutputMessager(string message, object name)
+        public static void OutputMessager(string message, object name)
         {
             Console.WriteLine(message + name.ToString());
         }
-        public string InputMessanger()
+        public static string InputMessanger()
         {
             string message = Console.ReadLine();
             return message;

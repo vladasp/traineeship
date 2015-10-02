@@ -9,7 +9,6 @@ namespace CleanCodeCup
 {
     public class Blocker
     {
-        DataInputOutputManager inOutManager = new DataInputOutputManager();
         Timer timerState = new Timer(timeState*1000);
         Timer timerSession = new Timer(timeSession*1000);
         int counBadSum = 3;                //Limitation of entering bad sum
@@ -28,12 +27,12 @@ namespace CleanCodeCup
             if (counter < countBadPinCode)
             {
                 ++counterBadCommand;
-                inOutManager.OutputMessager("Wrong pin code, you have attempts: ", countBadPinCode - counter);
+                DataInputOutputManager.OutputMessager("Wrong pin code, you have attempts: ", countBadPinCode - counter);
                 return false;
             }
             else
             {
-                inOutManager.OutputMessager("Wrong pin code. YOUR CARD WAS BLOCKED!");
+                DataInputOutputManager.OutputMessager("Wrong pin code. YOUR CARD WAS BLOCKED!");
                 return true;
             }
         }
@@ -46,12 +45,12 @@ namespace CleanCodeCup
             ++counterBadCommand;
             if (counter < counBadSum && !BlockBadCommand(counterBadCommand))
             {
-                inOutManager.OutputMessager("Wrong sum, you have attempts: ", counBadSum - counter);
+                DataInputOutputManager.OutputMessager("Wrong sum, you have attempts: ", counBadSum - counter);
                 return false;
             }
             else
             {
-                inOutManager.OutputMessager("So much bad sum. YOUR CARD WAS BLOCKED!");
+                DataInputOutputManager.OutputMessager("So much bad sum. YOUR CARD WAS BLOCKED!");
                 return true;
             }
         }
@@ -59,12 +58,12 @@ namespace CleanCodeCup
         {
             if (counter < countBadCommand)
             {
-                inOutManager.OutputMessager("Limit of bad attempts ", countBadCommand - counter);
+                DataInputOutputManager.OutputMessager("Limit of bad attempts ", countBadCommand - counter);
                 return false;
             }
             else
             {
-                Console.WriteLine("Bad command. YOURS CARD WAS BLOCK!");
+                DataInputOutputManager.OutputMessager("Bad command. YOURS CARD WAS BLOCK!");
                 return true;
             }
         }
@@ -76,7 +75,7 @@ namespace CleanCodeCup
             }
             else
             {
-                inOutManager.OutputMessager("So much command!");
+                DataInputOutputManager.OutputMessager("So much command!");
                 return true;
             }
         }
@@ -85,18 +84,23 @@ namespace CleanCodeCup
         {
             if (i)
             {
+                blockStateTimer = false;
                 timerState.Stop();
                 timerState.Start();
             }
             timerState.Elapsed += TimerStateElapsed;
-            if (blockStateTimer) inOutManager.OutputMessager("Time state is out!");
+            if (blockStateTimer) DataInputOutputManager.OutputMessager("Time state is out!");
             return blockStateTimer;
         }
         public bool BlockTimeLimitSassion(bool i)
         {
-            if (i) timerSession.Start();
+            if (i)
+            {
+                blockStateTimer = false;
+                timerSession.Start();
+            }
             timerSession.Elapsed += TimerSassionElapsed;
-            if (blockSassionTimer) inOutManager.OutputMessager("Time session is out!");
+            if (blockSassionTimer) DataInputOutputManager.OutputMessager("Time session is out!");
             return blockSassionTimer;
         }
         #endregion

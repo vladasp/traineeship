@@ -10,7 +10,6 @@ namespace CleanCodeCup
     {
         UserCommand userCommand = new UserCommand();
         Blocker blocker = new Blocker();
-        DataInputOutputManager inOutManager = new DataInputOutputManager();
         string enterUserData;
         int userPinCode;
         int countBadCommands;
@@ -71,23 +70,23 @@ namespace CleanCodeCup
         }
         public void Exit(Card card)
         {
-            inOutManager.OutputMessager("BYE ", card.IDUser);
+            DataInputOutputManager.OutputMessager("BYE ", card.IDUser);
         }
         public void Run()
         {
             blocker.BlockTimeLimitSassion(true);
             blocker.BlockTimeLimitState(true);
-            inOutManager.OutputMessager("INSERT");
+            DataInputOutputManager.OutputMessager("INSERT");
         }
         public MainMenu (Card card)
         {
             Run();
             CheckPinCode(card);
-            if (!card.BlockCard && !BlockMenu) inOutManager.OutputMessager("MENU");
-            else while (true) inOutManager.InputMessanger();
+            if (!card.BlockCard && !BlockMenu) DataInputOutputManager.OutputMessager("MENU");
+            else while (card.BlockCard && BlockMenu) DataInputOutputManager.InputMessanger();
         }
         public MainMenu() { }
-        public void Operations(Card card)
+        public void Operations(Card card, ManagerATM managarATM)
         {
             while (!card.BlockCard && !BlockMenu)
             {
@@ -98,28 +97,38 @@ namespace CleanCodeCup
                 switch (userCommand)
                 {
                     case UserCommand.BALANCE:
-                        inOutManager.OutputMessager(GetBalance(card).ToString());
+                        DataInputOutputManager.OutputMessager(GetBalance(card).ToString());
                         BlockMenu = (blocker.BlockTimeLimitState(false) || blocker.BlockTimeLimitSassion(false) || blocker.BlockCommandLimit(countCommands)) ? true : false;
+                        managarATM.cardInput = (BlockMenu || card.BlockCard) ? false : true;
                         break;
                     case UserCommand.CASH:
                         GetCash(card, cash.CheckSumSimbols());
-                        inOutManager.OutputMessager(card.Balance.ToString());
+                        DataInputOutputManager.OutputMessager(card.Balance.ToString());
                         BlockMenu = (blocker.BlockTimeLimitState(false) || blocker.BlockTimeLimitSassion(false) || blocker.BlockCommandLimit(countCommands)) ? true : false;
+                        managarATM.cardInput = (BlockMenu || card.BlockCard) ? false : true;
                         break;
                     case UserCommand.EXIT:
                         Exit(card);
                         BlockMenu = (blocker.BlockTimeLimitState(false) || blocker.BlockTimeLimitSassion(false) || blocker.BlockCommandLimit(countCommands)) ? true : false;
+                        managarATM.cardInput = (BlockMenu || card.BlockCard) ? false : true;
                         break;
                     default:
                         ++countBadCommands;
                         BlockMenu = (blocker.BlockTimeLimitState(false) || blocker.BlockTimeLimitSassion(false) || blocker.BlockCommandLimit(countCommands)) ? true : false;
+                        managarATM.cardInput = (BlockMenu || card.BlockCard) ? false : true;
                         break;
                 }
             }
-            while (true)
+            while (!managarATM.cardInput)
             {
-                inOutManager.OutputMessager("Menu blocked");
-                inOutManager.InputMessanger();
+                DataInputOutputManager.OutputMessager("Menu blocked");
+                DataInputOutputManager.InputMessanger();
+                managarATM.cardInput = true;
+                blocker.BlockTimeLimitSassion(true);
+                blocker.BlockTimeLimitState(true);
+                card.BlockCard = false;
+                BlockMenu = false;
+                managarATM.StartMainMenu(card);
             } 
         }
     }

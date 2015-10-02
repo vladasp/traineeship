@@ -13,16 +13,14 @@ namespace CleanCodeCup
         
         public static int CheckPinCodeSimbols(this string inputObject)
         {
-            DataInputOutputManager inOutMessanger = new DataInputOutputManager();
-            inputObject = inOutMessanger.InputMessanger();
+            inputObject = DataInputOutputManager.InputMessanger();
             int number;
             Int32.TryParse(inputObject, out number);
             return number;
         }
         public static string CheckCommandSimbols(this string inputObject)
         {
-            DataInputOutputManager inOutMessanger = new DataInputOutputManager();
-            inputObject = inOutMessanger.InputMessanger();
+            inputObject = DataInputOutputManager.InputMessanger();
             string command = string.Empty;
             int number;
             foreach (UserCommand u in Enum.GetValues(typeof(UserCommand)))
@@ -37,13 +35,9 @@ namespace CleanCodeCup
                 }
                 else
                 {
-                    if (inputObject.Length < Enum.GetNames(typeof(UserCommand)).Length)
+                    if (inputObject.Length >= Enum.GetNames(typeof(UserCommand)).Length)
                     {
-                        continue;
-                    }
-                    else
-                    {
-                        break;
+                       break;
                     }
                 }
             }
@@ -51,8 +45,7 @@ namespace CleanCodeCup
         }
         public static double CheckSumSimbols(this string inputObject)
         {
-            DataInputOutputManager inOutMessanger = new DataInputOutputManager();
-            inputObject = inOutMessanger.InputMessanger();
+            inputObject = DataInputOutputManager.InputMessanger();
             double number;
             Double.TryParse(inputObject, out number);
             return number;

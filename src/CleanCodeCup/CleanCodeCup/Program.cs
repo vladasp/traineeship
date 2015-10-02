@@ -17,14 +17,13 @@ namespace CleanCodeCup
                 BlockCard = false,
                 IDUser = "Rich",
             };
-            DataInputOutputManager inOutMessanger = new DataInputOutputManager();
             ManagerATM managerATM = new ManagerATM(card);
             MainMenu mainMenu = managerATM.StartMainMenu(card);
             while (!card.BlockCard && !mainMenu.BlockMenu)
             {
-                mainMenu.Operations(card);
+                mainMenu.Operations(card, managerATM);
             }
-            inOutMessanger.InputMessanger();
+            DataInputOutputManager.InputMessanger();
         }
     }
 }

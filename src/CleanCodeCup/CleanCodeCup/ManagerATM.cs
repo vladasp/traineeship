@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace CleanCodeCup
 {
-    class ManagerATM
+    public class ManagerATM
     {
-        DataInputOutputManager Messenger = new DataInputOutputManager();
         List<Card> cards = new List<Card>();
-        bool cardInput;
+        public bool cardInput;
         public void StartATM(object card)
         {
             if (card is Card) cardInput = true;
@@ -28,7 +27,7 @@ namespace CleanCodeCup
         public ManagerATM(object card)
         {
             StartATM(card);
-            if (!cardInput) Messenger.OutputMessager("Cant get card.");
+            if (!cardInput) DataInputOutputManager.OutputMessager("Cant get card.");
         }
     }
 }
