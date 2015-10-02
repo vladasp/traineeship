@@ -45,15 +45,16 @@
   <ItemGroup>
     <Compile Include="Blocker.cs" />
     <Compile Include="Card.cs" />
-    <Compile Include="DataInputOutputManeger.cs" />
+    <Compile Include="DataInputOutputManager.cs" />
     <Compile Include="DataValidator.cs" />
-    <Compile Include="ManegerATM.cs" />
+    <Compile Include="ManagerATM.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagramCCC.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

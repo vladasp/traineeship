@@ -7,33 +7,37 @@ using System.Threading.Tasks;
 namespace CleanCodeCup
 {
     public enum UserCommand {BALANCE = 1, CASH, EXIT};
+
     public static class DataValidator
     {
-        public static int ChackPinCodeSimbols(this string inputObgect)
+        
+        public static int CheckPinCodeSimbols(this string inputObject)
         {
-            inputObgect = Console.ReadLine();
+            DataInputOutputManager inOutMessanger = new DataInputOutputManager();
+            inputObject = inOutMessanger.InputMessanger();
             int number;
-            Int32.TryParse(inputObgect, out number);
+            Int32.TryParse(inputObject, out number);
             return number;
         }
-        public static string ChackCommandSimbols(this string inputObgect)
+        public static string CheckCommandSimbols(this string inputObject)
         {
-            inputObgect = Console.ReadLine();
+            DataInputOutputManager inOutMessanger = new DataInputOutputManager();
+            inputObject = inOutMessanger.InputMessanger();
             string command = string.Empty;
             int number;
             foreach (UserCommand u in Enum.GetValues(typeof(UserCommand)))
             {
-                if (u.ToString() == inputObgect)
+                if (u.ToString() == inputObject)
                 {
                     command = u.ToString();
                 }
-                else if (Int32.TryParse(inputObgect, out number) && (int)u == number)
+                else if (Int32.TryParse(inputObject, out number) && (int)u == number)
                 {
                     command = number.ToString();
                 }
                 else
                 {
-                    if (inputObgect.Length < Enum.GetNames(typeof(UserCommand)).Length)
+                    if (inputObject.Length < Enum.GetNames(typeof(UserCommand)).Length)
                     {
                         continue;
                     }
@@ -45,11 +49,12 @@ namespace CleanCodeCup
             }
             return command;
         }
-        public static double ChackSumSimbols(this string inputObgect)
+        public static double CheckSumSimbols(this string inputObject)
         {
-            inputObgect = Console.ReadLine();
+            DataInputOutputManager inOutMessanger = new DataInputOutputManager();
+            inputObject = inOutMessanger.InputMessanger();
             double number;
-            Double.TryParse(inputObgect, out number);
+            Double.TryParse(inputObject, out number);
             return number;
         }
     }

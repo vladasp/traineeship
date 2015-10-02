@@ -10,7 +10,7 @@ namespace CleanCodeCup
     {
         UserCommand userCommand = new UserCommand();
         Blocker blocker = new Blocker();
-        DataInputOutputManeger inOutManeger = new DataInputOutputManeger();
+        DataInputOutputManager inOutManager = new DataInputOutputManager();
         string enterUserData;
         int userPinCode;
         int countBadCommands;
@@ -58,7 +58,7 @@ namespace CleanCodeCup
             do
             {   ++countCommands;
                 BlockMenu = (blocker.BlockTimeLimitState(true) || blocker.BlockTimeLimitSassion(false))? true : false;
-                userPinCode = enterUserData.ChackPinCodeSimbols();
+                userPinCode = enterUserData.CheckPinCodeSimbols();
                 if (userPinCode != card.PinCode)
                 {
                     ++countBadPinCode;
@@ -71,20 +71,20 @@ namespace CleanCodeCup
         }
         public void Exit(Card card)
         {
-            inOutManeger.OutputMasseger("BYE ", card.IDUser);
+            inOutManager.OutputMessager("BYE ", card.IDUser);
         }
         public void Run()
         {
             blocker.BlockTimeLimitSassion(true);
             blocker.BlockTimeLimitState(true);
-            inOutManeger.OutputMasseger("INSERT");
+            inOutManager.OutputMessager("INSERT");
         }
         public MainMenu (Card card)
         {
             Run();
             CheckPinCode(card);
-            if (!card.BlockCard && !BlockMenu) inOutManeger.OutputMasseger("MENU");
-            else while (true) Console.ReadLine();
+            if (!card.BlockCard && !BlockMenu) inOutManager.OutputMessager("MENU");
+            else while (true) inOutManager.InputMessanger();
         }
         public MainMenu() { }
         public void Operations(Card card)
@@ -93,17 +93,17 @@ namespace CleanCodeCup
             {
                 ++countCommands;
                 BlockMenu = (blocker.BlockBadCommand(countBadCommands) || blocker.BlockTimeLimitState(true) || blocker.BlockTimeLimitSassion(false) || blocker.BlockCommandLimit(countCommands)) ? true : false;
-                enterUserData = enterUserData.ChackCommandSimbols();
+                enterUserData = enterUserData.CheckCommandSimbols();
                 Enum.TryParse(enterUserData, true, out userCommand);
                 switch (userCommand)
                 {
                     case UserCommand.BALANCE:
-                        inOutManeger.OutputMasseger(GetBalance(card).ToString());
+                        inOutManager.OutputMessager(GetBalance(card).ToString());
                         BlockMenu = (blocker.BlockTimeLimitState(false) || blocker.BlockTimeLimitSassion(false) || blocker.BlockCommandLimit(countCommands)) ? true : false;
                         break;
                     case UserCommand.CASH:
-                        GetCash(card, cash.ChackSumSimbols());
-                        inOutManeger.OutputMasseger(card.Balance.ToString());
+                        GetCash(card, cash.CheckSumSimbols());
+                        inOutManager.OutputMessager(card.Balance.ToString());
                         BlockMenu = (blocker.BlockTimeLimitState(false) || blocker.BlockTimeLimitSassion(false) || blocker.BlockCommandLimit(countCommands)) ? true : false;
                         break;
                     case UserCommand.EXIT:
@@ -118,7 +118,7 @@ namespace CleanCodeCup
             }
             while (true)
             {
-                inOutManeger.OutputMasseger("Menu blocked");
+                inOutManager.OutputMessager("Menu blocked");
                 Console.ReadKey();
             } 
         }

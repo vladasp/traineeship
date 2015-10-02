@@ -9,7 +9,7 @@ namespace CleanCodeCup
 {
     public class Blocker
     {
-        DataInputOutputManeger inOutManeger = new DataInputOutputManeger();
+        DataInputOutputManager inOutManager = new DataInputOutputManager();
         Timer timerState = new Timer(timeState*1000);
         Timer timerSession = new Timer(timeSession*1000);
         int counBadSum = 3;                //Limitation of entering bad sum
@@ -28,12 +28,12 @@ namespace CleanCodeCup
             if (counter < countBadPinCode)
             {
                 ++counterBadCommand;
-                inOutManeger.OutputMasseger("Wrong pin code, you have attempts: ", countBadPinCode - counter);
+                inOutManager.OutputMessager("Wrong pin code, you have attempts: ", countBadPinCode - counter);
                 return false;
             }
             else
             {
-                inOutManeger.OutputMasseger("Wrong pin code. YOURS CARD WAS BLOCK!");
+                inOutManager.OutputMessager("Wrong pin code. YOUR CARD WAS BLOCKED!");
                 return true;
             }
         }
@@ -46,12 +46,12 @@ namespace CleanCodeCup
             ++counterBadCommand;
             if (counter < counBadSum && !BlockBadCommand(counterBadCommand))
             {
-                inOutManeger.OutputMasseger("Wrong sum, you have attempts: ", counBadSum - counter);
+                inOutManager.OutputMessager("Wrong sum, you have attempts: ", counBadSum - counter);
                 return false;
             }
             else
             {
-                inOutManeger.OutputMasseger("So much bad sum. YOURS CARD WAS BLOCK!");
+                inOutManager.OutputMessager("So much bad sum. YOUR CARD WAS BLOCKED!");
                 return true;
             }
         }
@@ -59,7 +59,7 @@ namespace CleanCodeCup
         {
             if (counter < countBadCommand)
             {
-                inOutManeger.OutputMasseger("Limit of bad attempts ", countBadCommand - counter);
+                inOutManager.OutputMessager("Limit of bad attempts ", countBadCommand - counter);
                 return false;
             }
             else
@@ -76,7 +76,7 @@ namespace CleanCodeCup
             }
             else
             {
-                inOutManeger.OutputMasseger("So much command!");
+                inOutManager.OutputMessager("So much command!");
                 return true;
             }
         }
@@ -89,14 +89,14 @@ namespace CleanCodeCup
                 timerState.Start();
             }
             timerState.Elapsed += TimerStateElapsed;
-            if (blockStateTimer) inOutManeger.OutputMasseger("Time state is out!");
+            if (blockStateTimer) inOutManager.OutputMessager("Time state is out!");
             return blockStateTimer;
         }
         public bool BlockTimeLimitSassion(bool i)
         {
             if (i) timerSession.Start();
             timerSession.Elapsed += TimerSassionElapsed;
-            if (blockSassionTimer) inOutManeger.OutputMasseger("Time session is out!");
+            if (blockSassionTimer) inOutManager.OutputMessager("Time session is out!");
             return blockSassionTimer;
         }
         #endregion

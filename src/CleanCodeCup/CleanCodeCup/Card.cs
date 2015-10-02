@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CleanCodeCup
 {
-    public class Card : ICloneable
+    public class Card
     {
         private double balance;
         private int pinCode = 1234;
@@ -34,15 +34,5 @@ namespace CleanCodeCup
             set { blockCard = value; }
         }
         public Card() { }
-        public Card(Card card)
-        {
-            this.Balance = card.Balance;
-            this.BlockCard = card.BlockCard;
-            this.IDUser = card.IDUser;
-        }
-        public object Clone()
-        {
-           return MemberwiseClone();
-        }
     }
 }
