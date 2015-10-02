@@ -119,7 +119,7 @@ namespace CleanCodeCup
             while (true)
             {
                 inOutManager.OutputMessager("Menu blocked");
-                Console.ReadKey();
+                inOutManager.InputMessanger();
             } 
         }
     }
