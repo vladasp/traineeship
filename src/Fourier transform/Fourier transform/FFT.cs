@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FourierTransform
 {
-    public class FFT
+    public static class FFT
     {
         /// <summary>
         /// Calculation turning module e^(-i*2*PI*k/N)
@@ -16,7 +16,7 @@ namespace FourierTransform
         /// <param name="k"></param>
         /// <param name="N"></param>
         /// <returns></returns>
-        private Complex w(int k, int N)
+        private static Complex w(int k, int N)
         {            if (k % N == 0) return 1;
             double arg = -2 * Math.PI * k / N;
             return new Complex(Math.Cos(arg), Math.Sin(arg));
@@ -26,7 +26,7 @@ namespace FourierTransform
         /// </summary>
         /// <param name="x">An array of signal values. The number of values must be a power of 2</param>
         /// <returns>An array with the values of the signal</returns>
-        public Complex[] fft(Complex[] x)
+        public static Complex[] fft(Complex[] x)
         {
             Complex[] X;
             int N = x.Length;
@@ -61,7 +61,7 @@ namespace FourierTransform
         /// </summary>
         /// <param name="X">An array of values obtained in fft</param>
         /// <returns></returns>
-        public Complex[] nfft(Complex[] X)
+        public static Complex[] nfft(Complex[] X)
         {
             int N = X.Length;
             Complex[] X_n = new Complex[N];

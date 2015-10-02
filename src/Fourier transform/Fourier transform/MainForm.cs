@@ -18,8 +18,10 @@ namespace FourierTransform
     {
         
         string reference;
-        string primiryFuncName = "f(x)";      //Primiry function name on chart
-        string transformedFuncName = "F(x)";  //Transformed function name on chart
+        //Primiry function name on chart
+        string primiryFuncName = "f(x)";
+        //Transformed function name on chart      
+        string transformedFuncName = "F(x)";  
         int borderWidthLine = 7;
         public MainForm()
         {
@@ -43,9 +45,19 @@ namespace FourierTransform
             reference = openTxtFileDialog.FileName;
             textBoxFileName.Text = reference;
             string[] lines = File.ReadAllLines(reference);
+            int countLines = 0;
             foreach (string line in lines)
             {
-                primiryChart.Series[primiryFuncName].Points.Add(Convert.ToDouble(line));
+                try
+                {
+                    countLines++;
+                    primiryChart.Series[primiryFuncName].Points.Add(Convert.ToDouble(line));
+                }
+                catch
+                {
+                    MessageBox.Show("Can't read line! " + countLines);
+                }
+                
             }
         }
 
@@ -57,10 +69,9 @@ namespace FourierTransform
             {
                 dataInputComplex[c] = new Complex(c, Convert.ToDouble(lines[c]));
             }
-            FFT fastFourierTrasformation = new FFT();
             for (int i = 0; i < dataInputComplex.Length; i++)
             {
-                transformedChart.Series[transformedFuncName].Points.Add(fastFourierTrasformation.fft(dataInputComplex)[i].Imaginary);
+                transformedChart.Series[transformedFuncName].Points.Add(FFT.fft(dataInputComplex)[i].Imaginary);
             }
         }
     }
