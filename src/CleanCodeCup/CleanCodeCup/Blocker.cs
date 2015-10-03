@@ -9,15 +9,21 @@ namespace CleanCodeCup
 {
     public class Blocker
     {
-        Timer timerState = new Timer(timeState*1000);
-        Timer timerSession = new Timer(timeSession*1000);
-        int counBadSum = 3;                //Limitation of entering bad sum
-        int countBadPinCode = 3;           //Limitation of entering bad pincode
-        int countBadCommand = 5;           //Limitation of entering bad command
-        int countCommandLimit = 100;       //Limitation of entering all of command
+        Timer timerState = new Timer(timeState * 1000);
+        Timer timerSession = new Timer(timeSession * 1000);
+        //Limitation of entering bad sum
+        int counBadSum = 3;
+        //Limitation of entering bad pincode               
+        int countBadPinCode = 3;
+        //Limitation of entering bad command           
+        int countBadCommand = 5;
+        //Limitation of entering all of command         
+        int countCommandLimit = 100;       
         int counterBadCommand;
-        static int timeSession = 120;      //Limitation of time session in sec
-        static int timeState = 30;         //Limitation of time state in sec
+        //Limitation of time session in sec
+        static int timeSession = 120;
+        //Limitation of time state in sec             
+        static int timeState = 30;         
         public static bool blockStateTimer = false;
         public static bool blockSassionTimer = false;
 

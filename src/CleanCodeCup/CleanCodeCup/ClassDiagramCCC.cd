@@ -1,56 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="CleanCodeCup.Blocker">
-    <Position X="0.5" Y="0.5" Width="3" />
+    <Position X="3" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>DEgAkIAAAAAAAAAAAAEACAAAQAQQABBgAQAEAIAAAIE=</HashCode>
+      <HashCode>DEgAkIAAAAAAAAAAAAEACAAAQAQQABBAAQAEAIAAAIE=</HashCode>
       <FileName>Blocker.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CleanCodeCup.Card" BaseTypeListCollapsed="true">
-    <Position X="9" Y="0.5" Width="2.25" />
+  <Class Name="CleanCodeCup.Card">
+    <Position X="5.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAACAAAAAgAAAAICEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Card.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CleanCodeCup.DataInputOutputManeger">
-    <Position X="11.5" Y="0.5" Width="2.5" />
+  <Class Name="CleanCodeCup.DataInputOutputManager">
+    <Position X="7.5" Y="2.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>DataInputOutputManeger.cs</FileName>
+      <HashCode>AAEAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataInputOutputManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CleanCodeCup.DataValidator">
-    <Position X="11.5" Y="2" Width="2.5" />
+    <Position X="7.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAA=</HashCode>
       <FileName>DataValidator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CleanCodeCup.MainMenu">
-    <Position X="3.75" Y="0.5" Width="2.25" />
+    <Position X="0.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAICACAAAEAAAAAAAABAEABBECAAIgIAAAAEAgAKI=</HashCode>
+      <HashCode>AAAAICACAAAEAAAAAAAABAEABBECAAIAIAAAAEAgAKI=</HashCode>
       <FileName>MainMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CleanCodeCup.ManegerATM">
-    <Position X="6.25" Y="0.5" Width="2.5" />
+  <Class Name="CleanCodeCup.ManagerATM">
+    <Position X="5.5" Y="3.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAIAEAAAAhAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
-      <FileName>ManegerATM.cs</FileName>
+      <HashCode>AAAAAQAAAAAAAEAAAAhAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ManagerATM.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CleanCodeCup.Program">
-    <Position X="6.25" Y="3.25" Width="2.5" />
+    <Position X="10.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="CleanCodeCup.UserCommand">
-    <Position X="9" Y="4.25" Width="2.25" />
+    <Position X="10.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAAAAAAACAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataValidator.cs</FileName>
