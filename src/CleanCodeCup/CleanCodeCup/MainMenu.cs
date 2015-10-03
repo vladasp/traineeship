@@ -76,14 +76,14 @@ namespace CleanCodeCup
         {
             blocker.BlockTimeLimitSassion(true);
             blocker.BlockTimeLimitState(true);
-            DataInputOutputManager.OutputMessager("INSERT");
+            DataInputOutputManager.OutputMessenger("INSERT");
         }
         public MainMenu (Card card)
         {
             Run();
             CheckPinCode(card);
-            if (!card.BlockCard && !BlockMenu) DataInputOutputManager.OutputMessager("MENU");
-            else while (card.BlockCard && BlockMenu) DataInputOutputManager.InputMessanger();
+            if (!card.BlockCard && !BlockMenu) DataInputOutputManager.OutputMessenger("MENU");
+            else while (card.BlockCard && BlockMenu) DataInputOutputManager.InputMessenger();
         }
         public MainMenu() { }
         public void Operations(Card card, ManagerATM managarATM)
@@ -97,13 +97,13 @@ namespace CleanCodeCup
                 switch (userCommand)
                 {
                     case UserCommand.BALANCE:
-                        DataInputOutputManager.OutputMessager(GetBalance(card).ToString());
+                        DataInputOutputManager.OutputMessenger(GetBalance(card).ToString());
                         BlockMenu = (blocker.BlockTimeLimitState(false) || blocker.BlockTimeLimitSassion(false) || blocker.BlockCommandLimit(countCommands)) ? true : false;
                         managarATM.cardInput = (BlockMenu || card.BlockCard) ? false : true;
                         break;
                     case UserCommand.CASH:
                         GetCash(card, cash.CheckSumSimbols());
-                        DataInputOutputManager.OutputMessager(card.Balance.ToString());
+                        DataInputOutputManager.OutputMessenger(card.Balance.ToString());
                         BlockMenu = (blocker.BlockTimeLimitState(false) || blocker.BlockTimeLimitSassion(false) || blocker.BlockCommandLimit(countCommands)) ? true : false;
                         managarATM.cardInput = (BlockMenu || card.BlockCard) ? false : true;
                         break;
@@ -121,8 +121,8 @@ namespace CleanCodeCup
             }
             while (!managarATM.cardInput)
             {
-                DataInputOutputManager.OutputMessager("Menu blocked");
-                DataInputOutputManager.InputMessanger();
+                DataInputOutputManager.OutputMessenger("Menu blocked");
+                DataInputOutputManager.InputMessenger();
                 managarATM.cardInput = true;
                 blocker.BlockTimeLimitSassion(true);
                 blocker.BlockTimeLimitState(true);

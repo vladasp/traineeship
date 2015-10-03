@@ -23,7 +23,7 @@ namespace CleanCodeCup
             {
                 mainMenu.Operations(card, managerATM);
             }
-            DataInputOutputManager.InputMessanger();
+            DataInputOutputManager.InputMessenger();
         }
     }
 }

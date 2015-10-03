@@ -38,7 +38,7 @@ namespace CleanCodeCup
             }
             else
             {
-                DataInputOutputManager.OutputMessager("Wrong pin code. YOUR CARD WAS BLOCKED!");
+                DataInputOutputManager.OutputMessenger("Wrong pin code. YOUR CARD WAS BLOCKED!");
                 return true;
             }
         }
@@ -56,7 +56,7 @@ namespace CleanCodeCup
             }
             else
             {
-                DataInputOutputManager.OutputMessager("So much bad sum. YOUR CARD WAS BLOCKED!");
+                DataInputOutputManager.OutputMessenger("So much bad sum. YOUR CARD WAS BLOCKED!");
                 return true;
             }
         }
@@ -69,7 +69,7 @@ namespace CleanCodeCup
             }
             else
             {
-                DataInputOutputManager.OutputMessager("Bad command. YOURS CARD WAS BLOCK!");
+                DataInputOutputManager.OutputMessenger("Bad command. YOURS CARD WAS BLOCK!");
                 return true;
             }
         }
@@ -81,7 +81,7 @@ namespace CleanCodeCup
             }
             else
             {
-                DataInputOutputManager.OutputMessager("So much command!");
+                DataInputOutputManager.OutputMessenger("So much command!");
                 return true;
             }
         }
@@ -95,7 +95,7 @@ namespace CleanCodeCup
                 timerState.Start();
             }
             timerState.Elapsed += TimerStateElapsed;
-            if (blockStateTimer) DataInputOutputManager.OutputMessager("Time state is out!");
+            if (blockStateTimer) DataInputOutputManager.OutputMessenger("Time state is out!");
             return blockStateTimer;
         }
         public bool BlockTimeLimitSassion(bool i)
@@ -106,7 +106,7 @@ namespace CleanCodeCup
                 timerSession.Start();
             }
             timerSession.Elapsed += TimerSassionElapsed;
-            if (blockSassionTimer) DataInputOutputManager.OutputMessager("Time session is out!");
+            if (blockSassionTimer) DataInputOutputManager.OutputMessenger("Time session is out!");
             return blockSassionTimer;
         }
         #endregion

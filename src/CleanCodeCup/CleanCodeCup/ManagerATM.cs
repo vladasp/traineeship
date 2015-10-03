@@ -27,7 +27,7 @@ namespace CleanCodeCup
         public ManagerATM(object card)
         {
             StartATM(card);
-            if (!cardInput) DataInputOutputManager.OutputMessager("Cant get card.");
+            if (!cardInput) DataInputOutputManager.OutputMessenger("Cant get card.");
         }
     }
 }

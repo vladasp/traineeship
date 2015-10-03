@@ -8,7 +8,7 @@ namespace CleanCodeCup
 {
     public static class DataInputOutputManager
     {
-        public static void OutputMessager(string message)
+        public static void OutputMessenger(string message)
         {
             Console.WriteLine(message);
         }
@@ -16,7 +16,7 @@ namespace CleanCodeCup
         {
             Console.WriteLine(message + name.ToString());
         }
-        public static string InputMessanger()
+        public static string InputMessenger()
         {
             string message = Console.ReadLine();
             return message;
