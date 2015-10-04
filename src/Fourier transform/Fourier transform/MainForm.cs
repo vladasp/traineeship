@@ -36,7 +36,7 @@ namespace FourierTransform
             transformedChart.Series[transformedFuncName].BorderWidth = borderWidthLine;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonSelectFile_Click(object sender, EventArgs e)
         {
             if (primiryChart.Series[primiryFuncName].Points.Count != 0) primiryChart.Series[primiryFuncName].Points.Clear();
             if (transformedChart.Series[transformedFuncName].Points.Count != 0) transformedChart.Series[transformedFuncName].Points.Clear();
@@ -44,35 +44,42 @@ namespace FourierTransform
             openTxtFileDialog.ShowDialog();
             reference = openTxtFileDialog.FileName;
             textBoxFileName.Text = reference;
-            string[] lines = File.ReadAllLines(reference);
-            int countLines = 0;
-            foreach (string line in lines)
+            if (reference != String.Empty)
             {
-                try
+                string[] lines = File.ReadAllLines(reference);
+                int countLines = 0;
+                foreach (string line in lines)
                 {
-                    countLines++;
-                    primiryChart.Series[primiryFuncName].Points.Add(Convert.ToDouble(line));
+                    try
+                    {
+                        countLines++;
+                        primiryChart.Series[primiryFuncName].Points.Add(Convert.ToDouble(line));
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Can't read line! " + countLines);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Can't read line! " + countLines);
-                }
-                
             }
+            else MessageBox.Show("You forgot choose data file!");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonFFT_Click(object sender, EventArgs e)
         {
-            string[] lines = File.ReadAllLines(reference);
-            Complex[] dataInputComplex = new Complex[lines.Length];
-            for (int c = 0; c < dataInputComplex.Length; c++)
+            if (reference != null)
             {
-                dataInputComplex[c] = new Complex(c, Convert.ToDouble(lines[c]));
+                string[] lines = File.ReadAllLines(reference);
+                Complex[] dataInputComplex = new Complex[lines.Length];
+                for (int c = 0; c < dataInputComplex.Length; c++)
+                {
+                    dataInputComplex[c] = new Complex(c, Convert.ToDouble(lines[c]));
+                }
+                for (int i = 0; i < dataInputComplex.Length / 2; i++)
+                {
+                    transformedChart.Series[transformedFuncName].Points.Add(FFT.fft(dataInputComplex)[i].Imaginary);
+                }
             }
-            for (int i = 0; i < dataInputComplex.Length; i++)
-            {
-                transformedChart.Series[transformedFuncName].Points.Add(FFT.fft(dataInputComplex)[i].Imaginary);
-            }
+            else MessageBox.Show("You forgot choose data file!");
         }
     }
 }

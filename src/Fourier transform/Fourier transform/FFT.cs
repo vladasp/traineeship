@@ -1,10 +1,15 @@
 ﻿using System;
-using System.Numerics;
-using System.IO;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+using System.Numerics;
+
 
 namespace FourierTransform
 {
@@ -17,7 +22,8 @@ namespace FourierTransform
         /// <param name="N"></param>
         /// <returns></returns>
         private static Complex w(int k, int N)
-        {            if (k % N == 0) return 1;
+        {
+            if (k % N == 0) return 1;
             double arg = -2 * Math.PI * k / N;
             return new Complex(Math.Cos(arg), Math.Sin(arg));
         }
@@ -28,7 +34,7 @@ namespace FourierTransform
         /// <returns>An array with the values of the signal</returns>
         public static Complex[] fft(Complex[] x)
         {
-            Complex[] X;
+        Complex[] X;
             int N = x.Length;
             if (N == 2)
             {
