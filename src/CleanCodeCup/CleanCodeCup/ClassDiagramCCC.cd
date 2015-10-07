@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="CleanCodeCup.Blocker">
+    <Position X="3" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>DEgAkIAAAAAAAAAAAAEACAAAQAQQABBAAQAEAIAAAIE=</HashCode>
+      <FileName>Blocker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CleanCodeCup.Card">
+    <Position X="5.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAACAAAAAgAAAAICEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CleanCodeCup.DataInputOutputManager">
+    <Position X="7.5" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAQAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataInputOutputManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CleanCodeCup.DataValidator">
+    <Position X="7.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAA=</HashCode>
+      <FileName>DataValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CleanCodeCup.MainMenu">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAICACAAAEAAAAAAAABAEABBECAAIAIAAAAEAgAKI=</HashCode>
+      <FileName>MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CleanCodeCup.ManagerATM">
+    <Position X="5.5" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAEAAAAhAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ManagerATM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CleanCodeCup.Program">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="CleanCodeCup.UserCommand">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAACAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataValidator.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
